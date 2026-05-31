@@ -16,10 +16,10 @@
 }
 
 body{
-  min-height:100vh;
+  height:100vh;
   background:#000;
   color:#00ff41;
-  overflow-x:hidden;
+  overflow:hidden;
 }
 
 #matrix{
@@ -36,55 +36,59 @@ body{
 }
 
 .wrapper{
-  min-height:100vh;
+  height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:35px 20px;
+  padding:20px;
 }
 
 .panel{
-  width:min(1100px, 100%);
+  width:min(1050px,100%);
   display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:35px;
+  grid-template-columns:1.15fr .85fr;
+  gap:30px;
   align-items:center;
 }
 
 .card{
-  background:rgba(0,12,0,.86);
+  background:rgba(0,12,0,.88);
   border:1px solid #00ff41;
   box-shadow:0 0 25px rgba(0,255,65,.35);
-  padding:clamp(24px,4vw,42px);
+  padding:clamp(22px,3vw,34px);
   border-radius:14px;
+  max-height:92vh;
+  overflow:auto;
 }
 
 .brand{
-  font-size:clamp(42px,7vw,82px);
-  letter-spacing:clamp(4px,1vw,12px);
+  font-size:clamp(38px,6vw,72px);
+  letter-spacing:clamp(4px,1vw,10px);
   text-shadow:0 0 12px #00ff41,0 0 35px #00ff41;
-  margin-bottom:18px;
+  margin-bottom:12px;
+  text-align:center;
 }
 
 .subtitle{
   color:#9cffb7;
-  margin-bottom:28px;
+  margin-bottom:22px;
+  text-align:center;
 }
 
 .section{
-  font-size:clamp(28px,4vw,38px);
-  margin-bottom:18px;
+  font-size:clamp(26px,4vw,36px);
+  margin-bottom:15px;
 }
 
 .line{
   height:1px;
   background:#00ff41;
-  margin-bottom:25px;
+  margin-bottom:20px;
 }
 
 .info{
-  font-size:clamp(15px,2vw,18px);
-  margin-bottom:11px;
+  font-size:clamp(15px,2vw,17px);
+  margin-bottom:9px;
   color:#d4ffd9;
 }
 
@@ -99,13 +103,13 @@ body{
 .btn{
   display:block;
   width:100%;
-  margin:28px 0 22px;
-  padding:18px;
+  margin:22px 0 18px;
+  padding:16px;
   background:#ff6a00;
   color:#fff;
   text-align:center;
   text-decoration:none;
-  font-size:clamp(17px,2.5vw,22px);
+  font-size:clamp(16px,2.3vw,20px);
   font-weight:bold;
   box-shadow:0 0 15px rgba(255,106,0,.45);
 }
@@ -116,8 +120,8 @@ body{
 
 .credits{
   border:1px dashed #ff7a00;
-  padding:14px;
-  margin-bottom:22px;
+  padding:12px;
+  margin-bottom:18px;
   color:#ddd;
 }
 
@@ -127,11 +131,11 @@ body{
 
 .updates{
   border-top:1px solid rgba(0,255,65,.35);
-  padding-top:20px;
+  padding-top:16px;
 }
 
 .updates h3{
-  margin-bottom:14px;
+  margin-bottom:12px;
 }
 
 .updates ul{
@@ -140,7 +144,7 @@ body{
 
 .updates li{
   color:#cfcfcf;
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 
 .updates li::before{
@@ -154,28 +158,46 @@ body{
   justify-content:center;
 }
 
-.hacker{
-  width:min(360px, 85%);
+.logo-circle{
+  width:min(360px,85%);
   aspect-ratio:1/1;
-  border:1px solid rgba(0,255,65,.5);
   border-radius:50%;
+  border:2px solid #00ff41;
+  background:rgba(0,20,0,.45);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:clamp(120px,18vw,230px);
-  background:rgba(0,20,0,.45);
-  box-shadow:0 0 45px rgba(0,255,65,.28);
+  box-shadow:0 0 45px rgba(0,255,65,.35);
+  padding:28px;
+}
+
+.logo-img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 0 10px #00ff41) drop-shadow(0 0 22px #00ff41);
 }
 
 footer{
-  margin-top:25px;
+  margin-top:16px;
   color:#00ff41;
   opacity:.65;
-  font-size:13px;
+  font-size:12px;
   text-align:center;
 }
 
 @media(max-width:850px){
+  body{
+    height:auto;
+    min-height:100vh;
+    overflow-y:auto;
+  }
+
+  .wrapper{
+    height:auto;
+    min-height:100vh;
+  }
+
   .panel{
     grid-template-columns:1fr;
   }
@@ -184,36 +206,13 @@ footer{
     order:-1;
   }
 
-  .hacker{
-    width:min(230px,70%);
-    font-size:120px;
+  .logo-circle{
+    width:180px;
+    padding:18px;
   }
 
   .card{
-    text-align:left;
-  }
-
-  .brand{
-    text-align:center;
-  }
-
-  .subtitle{
-    text-align:center;
-  }
-}
-
-@media(max-width:480px){
-  .wrapper{
-    padding:22px 12px;
-  }
-
-  .card{
-    padding:22px;
-  }
-
-  .hacker{
-    width:170px;
-    font-size:95px;
+    max-height:none;
   }
 }
 </style>
@@ -229,14 +228,15 @@ footer{
 
     <div class="card">
       <h1 class="brand">MOVILFIX</h1>
-      <p class="subtitle">Official Download Center</p>
+      <p class="subtitle">Centro de descarga oficial</p>
 
-      <h2 class="section">SYSTEM_FILES</h2>
+      <h2 class="section">ARCHIVOS_SISTEMA</h2>
       <div class="line"></div>
 
       <p class="info">Software: <span class="orange">MOVILFIX Tool v2.2.2</span></p>
-      <p class="info">Estado: <span class="green">CRYPTED & SECURE</span></p>
+      <p class="info">Estado: <span class="green">CIFRADO Y SEGURO</span></p>
       <p class="info">Archivo: <span class="orange">MOVILFIX_INSTALLER_2.2.2.exe</span></p>
+      <p class="info">Tamaño: <span class="orange">38.9 MB</span></p>
 
       <a class="btn" href="https://github.com/Gustec2026/movilfix-web/releases/download/v2.2.2/MOVILFIX_INSTALLER_2.2.2.exe">
         ⬇ DESCARGAR TOOL
@@ -249,11 +249,11 @@ footer{
       <div class="updates">
         <h3>🚀 Actualizaciones:</h3>
         <ul>
-          <li>Fix DNS Relock</li>
-          <li>Add Patch Xiaomi</li>
-          <li>Add Patch Vivo</li>
-          <li>Fastboot Flash Xiaomi <span class="orange">[BETA]</span></li>
-          <li>System Files Updated</li>
+          <li>Movilfix DNS </li>
+          <li>XIAMO PATCH CUENTA MI</li>
+          <li>EDITOR HXD AUTOMATICO</li>
+          <li>UNLOCK RED OPPO</li>
+          <li>Archivos del sistema actualizados</li>
         </ul>
       </div>
 
@@ -261,7 +261,9 @@ footer{
     </div>
 
     <div class="figure">
-      <div class="hacker">👨‍💻</div>
+      <div class="logo-circle">
+        <img src="assets/logo.png" class="logo-img" alt="MOVILFIX Logo">
+      </div>
     </div>
 
   </div>
