@@ -3,189 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MOVILFIX - System Files</title>
+<title>MOVILFIX DNS - System Files</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Share Tech Mono', monospace;
 }
 
 body{
-    min-height:100vh;
-    background:linear-gradient(135deg,#050816,#0f172a,#111827);
-    color:#fff;
+  min-height:100vh;
+  background:#000;
+  color:#00ff41;
+  overflow:hidden;
+}
+
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:-1;
 }
 
 .container{
-    width:90%;
-    max-width:1100px;
-    margin:auto;
-    padding:40px 0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:30px;
 }
 
-.header{
-    text-align:center;
-    margin-bottom:45px;
-}
-
-.logo{
-    font-size:42px;
-    font-weight:900;
-    letter-spacing:2px;
-    color:#38bdf8;
-}
-
-.subtitle{
-    margin-top:10px;
-    color:#94a3b8;
-}
-
-.section-title{
-    font-size:28px;
-    margin-bottom:25px;
-    border-left:5px solid #22c55e;
-    padding-left:15px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:22px;
+.title{
+  font-size:64px;
+  letter-spacing:12px;
+  text-shadow:0 0 15px #00ff41,0 0 35px #00ff41;
+  margin-bottom:55px;
+  font-weight:900;
 }
 
 .card{
-    background:rgba(15,23,42,.95);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:18px;
-    padding:25px;
-    box-shadow:0 12px 30px rgba(0,0,0,.35);
-    transition:.25s;
+  width:100%;
+  max-width:470px;
+  min-height:420px;
+  border:1px solid #00ff41;
+  background:rgba(0,10,0,.82);
+  padding:38px;
+  box-shadow:0 0 20px rgba(0,255,65,.35);
 }
 
-.card:hover{
-    transform:translateY(-5px);
-    border-color:#38bdf8;
+.card h2{
+  font-size:31px;
+  margin-bottom:20px;
+  color:#00ff41;
 }
 
-.icon{
-    font-size:42px;
-    margin-bottom:15px;
+.line{
+  height:1px;
+  background:#00ff41;
+  margin-bottom:32px;
 }
 
-.card h3{
-    font-size:22px;
-    margin-bottom:10px;
+.software{
+  font-size:18px;
+  margin-bottom:10px;
 }
 
-.card p{
-    color:#cbd5e1;
-    font-size:14px;
-    line-height:1.6;
+.orange{
+  color:#ff7a00;
 }
 
-.info{
-    margin:18px 0;
-    font-size:13px;
-    color:#94a3b8;
+.status{
+  font-size:14px;
+  color:#aaa;
+  margin-bottom:25px;
 }
 
-.info span{
-    display:block;
-    margin-bottom:5px;
+.status span{
+  color:#00ff41;
 }
 
 .btn{
-    display:block;
-    text-align:center;
-    padding:13px;
-    border-radius:10px;
-    background:#22c55e;
-    color:#fff;
-    text-decoration:none;
-    font-weight:bold;
-    transition:.25s;
+  display:block;
+  width:100%;
+  padding:18px;
+  background:#ff6a00;
+  color:#fff;
+  text-align:center;
+  text-decoration:none;
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:22px;
+  transition:.2s;
 }
 
 .btn:hover{
-    background:#16a34a;
+  background:#ff8c00;
+  box-shadow:0 0 18px rgba(255,106,0,.7);
 }
 
-.btn.secondary{
-    background:#2563eb;
+.pass{
+  border:1px dashed #ff6a00;
+  padding:14px;
+  color:#ddd;
+  margin-bottom:25px;
+  font-size:17px;
 }
 
-.btn.secondary:hover{
-    background:#1d4ed8;
+.pass strong{
+  color:#ff6a00;
 }
 
-.footer{
+.updates{
+  border-top:1px solid rgba(0,255,65,.35);
+  padding-top:20px;
+}
+
+.updates h3{
+  font-size:18px;
+  margin-bottom:15px;
+}
+
+.updates ul{
+  list-style:none;
+}
+
+.updates li{
+  color:#bbb;
+  margin-bottom:11px;
+  font-size:16px;
+}
+
+.updates li::before{
+  content:"⚡ ";
+  color:#ff6a00;
+}
+
+footer{
+  margin-top:35px;
+  color:#00ff41;
+  opacity:.65;
+  font-size:13px;
+}
+
+@media(max-width:600px){
+  .title{
+    font-size:40px;
+    letter-spacing:6px;
     text-align:center;
-    margin-top:45px;
-    color:#64748b;
-    font-size:13px;
+  }
+
+  .card{
+    padding:28px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<canvas id="matrix"></canvas>
+<div class="overlay"></div>
+
 <div class="container">
 
-    <div class="header">
-        <div class="logo">MOVILFIX</div>
-        <div class="subtitle">Official Download Center</div>
+  <h1 class="title">MOVILFIX DNS</h1>
+
+  <div class="card">
+    <h2>SYSTEM_FILES</h2>
+    <div class="line"></div>
+
+    <p class="software">
+      Software: <span class="orange">MOVILFIX Tool v1.0.0</span>
+    </p>
+
+    <p class="status">
+      Estado: <span>CRYPTED & SECURE</span>
+    </p>
+
+    <a class="btn" href="https://github.com/Gustec2026/movilfix-web/releases/latest/download/MOVILFIX.exe">
+      DESCARGAR TOOL (.EXE)
+    </a>
+
+    <div class="pass">
+      <strong>PASSWORD:</strong> 12345678
     </div>
 
-    <h2 class="section-title">SYSTEM FILES</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <div class="icon">🧩</div>
-            <h3>MOVILFIX Tool</h3>
-            <p>Herramienta principal para instalación y ejecución del sistema MOVILFIX.</p>
-            <div class="info">
-                <span>Versión: 1.0.0</span>
-                <span>Archivo: MOVILFIX.exe</span>
-                <span>Estado: Disponible</span>
-            </div>
-            <a class="btn" href="/downloads/MOVILFIX.exe" download>DESCARGAR</a>
-        </div>
-
-        <div class="card">
-            <div class="icon">📦</div>
-            <h3>System Package</h3>
-            <p>Paquete complementario con archivos necesarios para el funcionamiento correcto.</p>
-            <div class="info">
-                <span>Versión: 1.0.0</span>
-                <span>Archivo: system-files.zip</span>
-                <span>Estado: Disponible</span>
-            </div>
-            <a class="btn secondary" href="/downloads/system-files.zip" download>DESCARGAR</a>
-        </div>
-
-        <div class="card">
-            <div class="icon">🔄</div>
-            <h3>Update File</h3>
-            <p>Archivo de actualización para mantener la herramienta en su versión más reciente.</p>
-            <div class="info">
-                <span>Versión: 1.0.0</span>
-                <span>Archivo: update.zip</span>
-                <span>Estado: Disponible</span>
-            </div>
-            <a class="btn secondary" href="/downloads/update.zip" download>DESCARGAR</a>
-        </div>
-
+    <div class="updates">
+      <h3>🚀 Actualizaciones:</h3>
+      <ul>
+        <li>Fix DNS Relock</li>
+        <li>Add Patch Xiaomi</li>
+        <li>Add Patch Vivo</li>
+        <li>Fastboot Flash Xiaomi <span class="orange">[BETA]</span></li>
+        <li>System Files Updated</li>
+      </ul>
     </div>
+  </div>
 
-    <div class="footer">
-        © 2026 MOVILFIX. All rights reserved.
-    </div>
+  <footer>© 2026 MOVILFIX. All rights reserved.</footer>
 
 </div>
+
+<script>
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*+-/<>[]{}";
+const fontSize = 18;
+let columns = Math.floor(canvas.width / fontSize);
+let drops = Array(columns).fill(1);
+
+function draw(){
+  ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#00ff41";
+  ctx.font = fontSize + "px monospace";
+
+  for(let i = 0; i < drops.length; i++){
+    const text = chars[Math.floor(Math.random() * chars.length)];
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
+
+    drops[i]++;
+  }
+}
+
+setInterval(draw, 40);
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  columns = Math.floor(canvas.width / fontSize);
+  drops = Array(columns).fill(1);
+});
+</script>
 
 </body>
 </html>
