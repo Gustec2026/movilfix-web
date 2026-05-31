@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOVILFIX - System Files</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#050816,#0f172a,#111827);
+    color:#fff;
+}
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:40px 0;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.logo{
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:2px;
+    color:#38bdf8;
+}
+
+.subtitle{
+    margin-top:10px;
+    color:#94a3b8;
+}
+
+.section-title{
+    font-size:28px;
+    margin-bottom:25px;
+    border-left:5px solid #22c55e;
+    padding-left:15px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:22px;
+}
+
+.card{
+    background:rgba(15,23,42,.95);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#38bdf8;
+}
+
+.icon{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#cbd5e1;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.info{
+    margin:18px 0;
+    font-size:13px;
+    color:#94a3b8;
+}
+
+.info span{
+    display:block;
+    margin-bottom:5px;
+}
+
+.btn{
+    display:block;
+    text-align:center;
+    padding:13px;
+    border-radius:10px;
+    background:#22c55e;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.btn:hover{
+    background:#16a34a;
+}
+
+.btn.secondary{
+    background:#2563eb;
+}
+
+.btn.secondary:hover{
+    background:#1d4ed8;
+}
+
+.footer{
+    text-align:center;
+    margin-top:45px;
+    color:#64748b;
+    font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="logo">MOVILFIX</div>
+        <div class="subtitle">Official Download Center</div>
+    </div>
+
+    <h2 class="section-title">SYSTEM FILES</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="icon">🧩</div>
+            <h3>MOVILFIX Tool</h3>
+            <p>Herramienta principal para instalación y ejecución del sistema MOVILFIX.</p>
+            <div class="info">
+                <span>Versión: 1.0.0</span>
+                <span>Archivo: MOVILFIX.exe</span>
+                <span>Estado: Disponible</span>
+            </div>
+            <a class="btn" href="/downloads/MOVILFIX.exe" download>DESCARGAR</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">📦</div>
+            <h3>System Package</h3>
+            <p>Paquete complementario con archivos necesarios para el funcionamiento correcto.</p>
+            <div class="info">
+                <span>Versión: 1.0.0</span>
+                <span>Archivo: system-files.zip</span>
+                <span>Estado: Disponible</span>
+            </div>
+            <a class="btn secondary" href="/downloads/system-files.zip" download>DESCARGAR</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔄</div>
+            <h3>Update File</h3>
+            <p>Archivo de actualización para mantener la herramienta en su versión más reciente.</p>
+            <div class="info">
+                <span>Versión: 1.0.0</span>
+                <span>Archivo: update.zip</span>
+                <span>Estado: Disponible</span>
+            </div>
+            <a class="btn secondary" href="/downloads/update.zip" download>DESCARGAR</a>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2026 MOVILFIX. All rights reserved.
+    </div>
+
+</div>
+
+</body>
+</html>
