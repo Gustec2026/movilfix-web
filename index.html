@@ -1,12 +1,15 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MOVILFIX DNS - DESCARGAS</title>
 
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 *{
@@ -17,10 +20,10 @@ font-family:'Share Tech Mono', monospace;
 }
 
 body{
-height:100vh;
 background:#000;
 color:#00ff41;
-overflow:hidden;
+overflow-x:hidden;
+min-height:100vh;
 }
 
 #matrix{
@@ -32,22 +35,25 @@ z-index:-2;
 .overlay{
 position:fixed;
 inset:0;
-background:radial-gradient(circle at center, rgba(0,255,65,.12), rgba(0,0,0,.88));
+background:
+radial-gradient(circle at center,
+rgba(0,255,65,.12),
+rgba(0,0,0,.92));
 z-index:-1;
 }
 
 .wrapper{
-height:100vh;
+min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-padding:20px;
+padding:25px;
 }
 
 .panel{
-width:min(1050px,100%);
+width:min(1150px,100%);
 display:grid;
-grid-template-columns:1.15fr .85fr;
+grid-template-columns:1.2fr .8fr;
 gap:30px;
 align-items:center;
 }
@@ -55,42 +61,46 @@ align-items:center;
 .card{
 background:rgba(0,12,0,.88);
 border:1px solid #00ff41;
-box-shadow:0 0 25px rgba(0,255,65,.35);
-padding:clamp(22px,3vw,34px);
-border-radius:14px;
-max-height:92vh;
-overflow:auto;
+border-radius:18px;
+padding:35px;
+box-shadow:
+0 0 25px rgba(0,255,65,.35),
+0 0 60px rgba(0,255,65,.08);
 }
 
 .brand{
-font-size:clamp(38px,6vw,72px);
-letter-spacing:clamp(4px,1vw,10px);
-text-shadow:0 0 12px #00ff41,0 0 35px #00ff41;
-margin-bottom:12px;
+font-size:clamp(40px,7vw,78px);
+letter-spacing:8px;
 text-align:center;
+text-shadow:
+0 0 12px #00ff41,
+0 0 35px #00ff41;
+margin-bottom:10px;
 }
 
 .subtitle{
-color:#9cffb7;
-margin-bottom:22px;
 text-align:center;
+color:#9cffb7;
+margin-bottom:25px;
+font-size:15px;
 }
 
 .section{
-font-size:clamp(26px,4vw,36px);
+font-size:32px;
 margin-bottom:15px;
 }
 
 .line{
 height:1px;
 background:#00ff41;
-margin-bottom:20px;
+margin-bottom:25px;
+opacity:.4;
 }
 
 .info{
-font-size:clamp(15px,2vw,17px);
-margin-bottom:9px;
-color:#d4ffd9;
+font-size:17px;
+margin-bottom:12px;
+color:#d6ffd8;
 }
 
 .orange{
@@ -101,65 +111,73 @@ color:#ff7a00;
 color:#00ff41;
 }
 
+.download-box{
+margin-top:25px;
+padding:20px;
+border:1px solid rgba(255,255,255,.08);
+border-radius:12px;
+background:rgba(0,0,0,.35);
+}
+
 .btn{
-display:block;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
 width:100%;
-margin:22px 0 12px;
-padding:16px;
-background:#ff6a00;
-color:#fff;
-text-align:center;
+padding:18px;
+margin-bottom:15px;
+background:linear-gradient(135deg,#ff5f00,#ff9500);
+color:white;
 text-decoration:none;
-font-size:clamp(16px,2.3vw,20px);
+font-size:20px;
 font-weight:bold;
-border-radius:8px;
-box-shadow:0 0 15px rgba(255,106,0,.45);
+border-radius:10px;
 transition:.3s;
+box-shadow:0 0 25px rgba(255,120,0,.35);
 }
 
 .btn:hover{
-background:#ff8a00;
-transform:translateY(-2px);
+transform:translateY(-3px);
+box-shadow:0 0 35px rgba(255,120,0,.75);
 }
 
 .btn-whatsapp{
-display:block;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
 width:100%;
 padding:16px;
 background:#25D366;
 color:white;
-text-align:center;
 text-decoration:none;
 font-size:18px;
 font-weight:bold;
-border-radius:8px;
-box-shadow:0 0 20px rgba(37,211,102,.7);
+border-radius:10px;
 transition:.3s;
 }
 
 .btn-whatsapp:hover{
 background:#1ebe5d;
-transform:translateY(-2px);
 }
 
 .credits{
+margin-top:25px;
+padding:15px;
 border:1px dashed #ff7a00;
-padding:12px;
-margin:18px 0;
+border-radius:10px;
+background:rgba(255,122,0,.05);
 color:#ddd;
 }
 
-.credits strong{
-color:#ff7a00;
-}
-
 .updates{
-border-top:1px solid rgba(0,255,65,.35);
-padding-top:16px;
+margin-top:30px;
 }
 
 .updates h3{
-margin-bottom:12px;
+margin-bottom:15px;
+font-size:22px;
 }
 
 .updates ul{
@@ -167,8 +185,9 @@ list-style:none;
 }
 
 .updates li{
-color:#cfcfcf;
-margin-bottom:8px;
+margin-bottom:12px;
+color:#d4d4d4;
+font-size:15px;
 }
 
 .updates li::before{
@@ -178,66 +197,55 @@ color:#ff7a00;
 
 .figure{
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 }
 
 .logo-circle{
-width:min(360px,85%);
+width:min(370px,90%);
 aspect-ratio:1/1;
 border-radius:50%;
 border:2px solid #00ff41;
-background:rgba(0,20,0,.45);
 display:flex;
-align-items:center;
 justify-content:center;
-box-shadow:0 0 45px rgba(0,255,65,.35);
+align-items:center;
+background:rgba(0,20,0,.35);
 padding:28px;
-animation: glow 3s infinite alternate;
+box-shadow:
+0 0 25px rgba(0,255,65,.35),
+0 0 80px rgba(0,255,65,.15);
 }
 
 .logo-img{
 max-width:100%;
 max-height:100%;
 object-fit:contain;
-filter:drop-shadow(0 0 10px #00ff41)
-drop-shadow(0 0 22px #00ff41);
-}
-
-@keyframes glow{
-from{
-box-shadow:0 0 25px rgba(0,255,65,.3);
-}
-to{
-box-shadow:0 0 60px rgba(0,255,65,.9);
-}
+filter:
+drop-shadow(0 0 10px #00ff41)
+drop-shadow(0 0 25px #00ff41);
 }
 
 footer{
-margin-top:16px;
-color:#00ff41;
-opacity:.65;
-font-size:12px;
+margin-top:25px;
 text-align:center;
+font-size:12px;
+opacity:.6;
 }
-
-/* WHATSAPP FLOTANTE */
 
 .whatsapp-float{
 position:fixed;
 bottom:25px;
 right:25px;
-width:72px;
-height:72px;
+width:75px;
+height:75px;
 background:#25D366;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-z-index:9999;
+z-index:999;
 text-decoration:none;
-box-shadow:0 0 25px rgba(37,211,102,.9);
-animation:pulse 1.8s infinite;
+box-shadow:0 0 30px rgba(37,211,102,.9);
 }
 
 .whatsapp-float img{
@@ -245,30 +253,7 @@ width:42px;
 height:42px;
 }
 
-@keyframes pulse{
-0%{
-box-shadow:0 0 0 0 rgba(37,211,102,.8);
-}
-70%{
-box-shadow:0 0 0 20px rgba(37,211,102,0);
-}
-100%{
-box-shadow:0 0 0 0 rgba(37,211,102,0);
-}
-}
-
-@media(max-width:850px){
-
-body{
-height:auto;
-min-height:100vh;
-overflow-y:auto;
-}
-
-.wrapper{
-height:auto;
-min-height:100vh;
-}
+@media(max-width:900px){
 
 .panel{
 grid-template-columns:1fr;
@@ -279,27 +264,28 @@ order:-1;
 }
 
 .logo-circle{
-width:180px;
-padding:18px;
+width:200px;
+padding:20px;
 }
 
 .card{
-max-height:none;
+padding:25px;
 }
 
-.whatsapp-float{
-width:60px;
-height:60px;
-bottom:18px;
-right:18px;
+.brand{
+font-size:50px;
 }
 
-.whatsapp-float img{
-width:35px;
-height:35px;
+.section{
+font-size:26px;
+}
+
+.btn{
+font-size:17px;
 }
 
 }
+
 </style>
 </head>
 
@@ -317,11 +303,11 @@ height:35px;
 <h1 class="brand">MOVILFIX</h1>
 
 <p class="subtitle">
-Centro de descarga oficial
+CENTRO OFICIAL DE DESCARGAS
 </p>
 
 <h2 class="section">
-ACTUALIZACIÓNES
+🚀 VERSION ACTUAL
 </h2>
 
 <div class="line"></div>
@@ -333,7 +319,7 @@ Software:
 
 <p class="info">
 Estado:
-<span class="green">FASE BETA </span>
+<span class="green">FASE BETA</span>
 </p>
 
 <p class="info">
@@ -346,8 +332,10 @@ Tamaño:
 <span class="orange">38.9 MB</span>
 </p>
 
+<div class="download-box">
+
 <a class="btn"
-href="https://github.com/Gustec2026/movilfix-web/releases/download/v3.0.0/MOVILFIX_INSTALLER_3.0.0.exe"
+href="https://gustec2026.github.io/movilfix-web/descargas/"
 target="_blank">
 
 ⬇ DESCARGAR TOOL
@@ -362,27 +350,35 @@ target="_blank">
 
 </a>
 
+</div>
+
 <div class="credits">
-<strong>CRÉDITOS:</strong> MOVILFIX GUSTEC 2026
+
+<strong>CRÉDITOS:</strong>
+
+MOVILFIX GUSTEC 2026
+
 </div>
 
 <div class="updates">
 
-<h3>🚀 Actualizaciones:</h3>
+<h3>⚡ ACTUALIZACIONES</h3>
 
 <ul>
-<li>MODE KIOSKO SIN DNS beta </li>
-<li>MODE PAYJOY SIN DNS beta </li>
+
+<li>MODE KIOSKO SIN DNS beta</li>
+<li>MODE PAYJOY SIN DNS beta</li>
 <li>XIAOMI PATCH CUENTA MI</li>
 <li>EDITOR HXD AUTOMÁTICO</li>
 <li>UNLOCK RED OPPO</li>
-<li>ASEGURATE DE USAR LA ULTIMA ACTUALIZACION</li>
+<li>ASEGÚRATE DE USAR LA ÚLTIMA VERSIÓN</li>
+
 </ul>
 
 </div>
 
 <footer>
-© 2026 MOVILFIX. TODOS LOS DERECHOS RESERVADOS.
+© 2026 MOVILFIX — TODOS LOS DERECHOS RESERVADOS.
 </footer>
 
 </div>
@@ -417,12 +413,20 @@ alt="WhatsApp">
 
 <script>
 
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
+const canvas =
+document.getElementById("matrix");
+
+const ctx =
+canvas.getContext("2d");
 
 function resizeCanvas(){
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
+canvas.width =
+window.innerWidth;
+
+canvas.height =
+window.innerHeight;
+
 }
 
 resizeCanvas();
@@ -440,16 +444,29 @@ Array(columns).fill(1);
 
 function draw(){
 
-ctx.fillStyle = "rgba(0,0,0,0.08)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle =
+"rgba(0,0,0,0.08)";
+
+ctx.fillRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
 
 ctx.fillStyle = "#00ff41";
-ctx.font = fontSize + "px monospace";
+
+ctx.font =
+fontSize + "px monospace";
 
 for(let i=0;i<drops.length;i++){
 
 const text =
-chars[Math.floor(Math.random()*chars.length)];
+chars[
+Math.floor(
+Math.random()*chars.length
+)
+];
 
 ctx.fillText(
 text,
@@ -458,7 +475,8 @@ drops[i]*fontSize
 );
 
 if(
-drops[i]*fontSize > canvas.height &&
+drops[i]*fontSize >
+canvas.height &&
 Math.random() > 0.975
 ){
 drops[i]=0;
@@ -488,3 +506,4 @@ Array(columns).fill(1);
 
 </body>
 </html>
+```
