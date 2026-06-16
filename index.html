@@ -188,6 +188,33 @@ background:linear-gradient(135deg,var(--red),#840019);
 
 .whatsapp{
 background:linear-gradient(135deg,#25D366,#128C7E);
+position:relative;
+overflow:hidden;
+animation:whatsappGlow 2s infinite alternate, whatsappPulseBtn 1.8s infinite;
+}
+
+.whatsapp::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:60%;
+height:100%;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+transform:skewX(-25deg);
+animation:shine 2.8s infinite;
+}
+
+.whatsapp:hover{
+transform:translateY(-4px) scale(1.05);
+}
+
+.whatsapp-btn-img{
+width:32px;
+height:32px;
+object-fit:contain;
+filter:drop-shadow(0 0 8px rgba(37,211,102,.9));
+animation:iconBounce 1.5s infinite;
 }
 
 .btn strong{
@@ -199,26 +226,25 @@ font-size:18px;
 font-size:11px;
 }
 
-.whatsapp-btn-img{
-width:32px;
-height:32px;
-object-fit:contain;
-filter:drop-shadow(0 0 8px rgba(37,211,102,.9));
-}
-
 .logo{
 display:flex;
 align-items:center;
 justify-content:center;
-min-height:320px;
+min-height:280px;
 }
 
 .logo img{
-width:min(360px,90%);
+width:min(280px,75%);
+max-width:280px;
 filter:
-drop-shadow(0 0 20px rgba(255,29,47,.8))
-drop-shadow(0 0 30px rgba(139,53,255,.8));
-animation:logoFloat 3s ease-in-out infinite;
+drop-shadow(0 0 15px rgba(255,29,47,.8))
+drop-shadow(0 0 25px rgba(139,53,255,.7));
+animation:logoFloat 4s ease-in-out infinite;
+transition:.3s;
+}
+
+.logo img:hover{
+transform:scale(1.04);
 }
 
 .features{
@@ -314,8 +340,8 @@ display:block;
 position:fixed;
 right:20px;
 bottom:20px;
-width:60px;
-height:60px;
+width:65px;
+height:65px;
 border-radius:50%;
 display:flex;
 align-items:center;
@@ -324,110 +350,93 @@ background:#25D366;
 z-index:9999;
 animation:whatsappPulse 1.7s infinite;
 box-shadow:
-0 0 25px rgba(37,211,102,.8),
-0 0 40px rgba(37,211,102,.4);
+0 0 30px rgba(37,211,102,.8),
+0 0 50px rgba(37,211,102,.4);
+transition:.25s;
+}
+
+.whatsapp-float:hover{
+transform:scale(1.12);
 }
 
 .whatsapp-float img{
-width:34px;
+width:36px;
 }
 
 @keyframes pulse{
-50%{
-opacity:.5;
-transform:scale(1.2);
-}
+50%{opacity:.5;transform:scale(1.2);}
 }
 
 @keyframes panelGlow{
-from{
-box-shadow:
-0 0 20px rgba(139,53,255,.25),
-0 0 20px rgba(255,29,47,.15);
-}
-to{
-box-shadow:
-0 0 45px rgba(139,53,255,.55),
-0 0 45px rgba(255,29,47,.35);
-}
+from{box-shadow:0 0 20px rgba(139,53,255,.25),0 0 20px rgba(255,29,47,.15);}
+to{box-shadow:0 0 45px rgba(139,53,255,.55),0 0 45px rgba(255,29,47,.35);}
 }
 
 @keyframes neonPulse{
-from{
-filter:drop-shadow(0 0 8px rgba(255,29,47,.6));
-}
-to{
-filter:
-drop-shadow(0 0 18px rgba(255,29,47,.95))
-drop-shadow(0 0 28px rgba(139,53,255,.9));
-}
+from{filter:drop-shadow(0 0 8px rgba(255,29,47,.6));}
+to{filter:drop-shadow(0 0 18px rgba(255,29,47,.95)) drop-shadow(0 0 28px rgba(139,53,255,.9));}
 }
 
 @keyframes logoFloat{
-0%,100%{
-transform:translateY(0) scale(1);
-}
-50%{
-transform:translateY(-10px) scale(1.03);
-}
+0%,100%{transform:translateY(0) scale(1);}
+50%{transform:translateY(-8px) scale(1.02);}
 }
 
 @keyframes iconPulse{
-from{
-filter:drop-shadow(0 0 5px rgba(255,29,47,.5));
-}
-to{
-filter:
-drop-shadow(0 0 12px rgba(255,29,47,.9))
-drop-shadow(0 0 18px rgba(139,53,255,.8));
-}
+from{filter:drop-shadow(0 0 5px rgba(255,29,47,.5));}
+to{filter:drop-shadow(0 0 12px rgba(255,29,47,.9)) drop-shadow(0 0 18px rgba(139,53,255,.8));}
 }
 
 @keyframes whatsappPulse{
-0%{
-box-shadow:0 0 0 0 rgba(37,211,102,.8);
+0%{box-shadow:0 0 0 0 rgba(37,211,102,.8);}
+70%{box-shadow:0 0 0 18px rgba(37,211,102,0);}
+100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
 }
-70%{
-box-shadow:0 0 0 18px rgba(37,211,102,0);
+
+@keyframes whatsappGlow{
+from{
+box-shadow:
+0 0 15px rgba(37,211,102,.4),
+0 0 25px rgba(37,211,102,.2);
 }
-100%{
-box-shadow:0 0 0 0 rgba(37,211,102,0);
+to{
+box-shadow:
+0 0 30px rgba(37,211,102,.95),
+0 0 50px rgba(37,211,102,.5);
 }
+}
+
+@keyframes shine{
+0%{left:-120%;}
+100%{left:150%;}
+}
+
+@keyframes iconBounce{
+0%,100%{transform:translateY(0) scale(1);}
+50%{transform:translateY(-4px) scale(1.12);}
+}
+
+@keyframes whatsappPulseBtn{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.03);}
 }
 
 @keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(18px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+from{opacity:0;transform:translateY(18px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 @keyframes fadeDown{
-from{
-opacity:0;
-transform:translateY(-18px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+from{opacity:0;transform:translateY(-18px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 @keyframes bgMove{
-from{
-filter:hue-rotate(0deg) brightness(1);
-}
-to{
-filter:hue-rotate(12deg) brightness(1.25);
-}
+from{filter:hue-rotate(0deg) brightness(1);}
+to{filter:hue-rotate(12deg) brightness(1.25);}
 }
 
 @media(max-width:900px){
-
 .container{
 padding:12px;
 align-items:flex-start;
@@ -467,11 +476,12 @@ margin:18px 0 12px;
 
 .logo{
 min-height:auto;
-margin:10px 0;
+margin:5px 0 15px;
 }
 
 .logo img{
-width:min(240px,78%);
+width:min(200px,65%);
+max-width:200px;
 }
 
 .grid{
@@ -616,7 +626,7 @@ MOVILFIX DNS | CENTRO OFICIAL
 </div>
 <div>
 <strong>UNIRSE AL GRUPO OFICIAL</strong>
-<small>COMUNIDAD MOVILFIX</small>
+<small>🔥 COMUNIDAD MOVILFIX 🔥</small>
 </div>
 </a>
 
@@ -726,15 +736,10 @@ ctx.font=size+"px monospace";
 for(let i=0;i<drops.length;i++){
 const text=chars[Math.floor(Math.random()*chars.length)];
 
-ctx.fillStyle=i%2===0?"#ff1d2f":"#8b35ff";
+ctx.fillStyle=i%2===0 ? "#ff1d2f" : "#8b35ff";
+ctx.fillText(text,i*size,drops[i]*size);
 
-ctx.fillText(
-text,
-i*size,
-drops[i]*size
-);
-
-if(drops[i]*size>canvas.height&&Math.random()>.975){
+if(drops[i]*size>canvas.height && Math.random()>.975){
 drops[i]=0;
 }
 
