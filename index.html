@@ -240,12 +240,11 @@ font-size:15px;
 font-size:9px;
 }
 
-/* FUNCIONES CON IMÁGENES VISIBLES */
 .features{
 list-style:none;
 border:1px solid rgba(139,53,255,.25);
 border-radius:14px;
-overflow:hidden;
+overflow:visible;
 width:100%;
 background:rgba(8,3,18,.55);
 }
@@ -257,6 +256,7 @@ min-height:70px;
 align-items:center;
 border-bottom:1px solid rgba(139,53,255,.2);
 transition:.25s;
+position:relative;
 }
 
 .features li:last-child{
@@ -293,11 +293,13 @@ line-height:1.3;
 }
 
 .preview-box{
-height:58px;
+position:relative;
 display:flex;
 align-items:center;
 justify-content:center;
+height:58px;
 padding:6px;
+overflow:visible;
 }
 
 .preview-box img{
@@ -308,6 +310,25 @@ border-radius:10px;
 border:1px solid rgba(255,29,47,.55);
 background:#000;
 box-shadow:0 0 12px rgba(255,29,47,.45),0 0 20px rgba(139,53,255,.35);
+transition:all .3s ease;
+cursor:pointer;
+z-index:10;
+}
+
+.preview-box img:hover{
+position:absolute;
+right:0;
+top:50%;
+transform:translate(105%,-50%);
+width:280px;
+height:auto;
+max-height:420px;
+padding:8px;
+background:#000;
+border:2px solid rgba(255,29,47,.8);
+border-radius:14px;
+z-index:99999;
+box-shadow:0 0 25px rgba(255,29,47,.75),0 0 40px rgba(139,53,255,.5);
 }
 
 .xiaomi img,
@@ -480,6 +501,18 @@ height:52px;
 padding:5px;
 }
 
+.preview-box img:hover{
+position:fixed;
+left:50%;
+top:50%;
+right:auto;
+transform:translate(-50%,-50%);
+width:82vw;
+max-width:320px;
+height:auto;
+max-height:80vh;
+}
+
 .feature-img{
 width:28px;
 height:28px;
@@ -636,11 +669,11 @@ MOVILFIX DNS | CENTRO OFICIAL
 
 <li>
 <div class="feature-icon">
-<i class="fa-solid fa-signal signal"></i>
+<img class="feature-img" src="assets/unlock-red-oppo.jpeg" alt="Unlock Red Oppo">
 </div>
 <div class="feature-title">UNLOCK RED OPPO</div>
 <div class="preview-box">
-<img src="assets/oppo.png" alt="Oppo">
+<img src="assets/unlock-red-oppo.jpeg" alt="Unlock Red Oppo">
 </div>
 </li>
 
