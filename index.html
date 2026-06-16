@@ -69,6 +69,7 @@ body{
   box-shadow:
     0 0 30px rgba(139,53,255,.25),
     0 0 30px rgba(255,29,47,.18);
+  animation:panelGlow 3s ease-in-out infinite alternate;
 }
 
 .badge{
@@ -79,6 +80,7 @@ body{
   border:1px solid rgba(255,29,47,.45);
   border-radius:10px;
   font-size:11px;
+  animation:fadeDown .6s ease both;
 }
 
 .brand-row{
@@ -94,6 +96,7 @@ body{
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   filter:drop-shadow(0 0 14px rgba(255,29,47,.55));
+  animation:brandGlow 2s ease-in-out infinite alternate;
 }
 
 .brand-logo{
@@ -103,6 +106,11 @@ body{
   filter:
     drop-shadow(0 0 14px rgba(255,29,47,.75))
     drop-shadow(0 0 22px rgba(139,53,255,.75));
+  animation:
+    logoFloat 3.5s ease-in-out infinite,
+    logoGlow 2s ease-in-out infinite alternate,
+    logoRotate 8s ease-in-out infinite;
+  will-change:transform,filter;
 }
 
 .subtitle{
@@ -131,6 +139,12 @@ body{
   overflow:hidden;
   background:rgba(139,53,255,.08);
   border:1px solid rgba(139,53,255,.25);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 16px rgba(139,53,255,.35);
 }
 
 .icon{
@@ -163,6 +177,11 @@ body{
   text-shadow:0 0 10px var(--green);
 }
 
+.online-dot{
+  color:#00ff66;
+  animation:dotPulse 1.4s ease-in-out infinite;
+}
+
 .btn{
   display:grid;
   grid-template-columns:52px 1fr;
@@ -173,11 +192,12 @@ body{
   text-decoration:none;
   border-radius:12px;
   overflow:hidden;
-  transition:.2s;
+  transition:transform .18s ease,filter .18s ease;
 }
 
 .btn:hover{
   transform:translateY(-2px);
+  filter:brightness(1.08);
 }
 
 .download{
@@ -185,7 +205,22 @@ body{
 }
 
 .whatsapp{
+  position:relative;
   background:linear-gradient(135deg,#25D366,#128C7E);
+  animation:whatsappGlow 2s ease-in-out infinite alternate;
+}
+
+.whatsapp::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-80%;
+  width:45%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.32),transparent);
+  transform:skewX(-25deg);
+  animation:shine 3s ease-in-out infinite;
+  pointer-events:none;
 }
 
 .btn strong{
@@ -200,6 +235,8 @@ body{
 .whatsapp-btn-img{
   width:28px;
   height:28px;
+  animation:iconBounce 1.6s ease-in-out infinite;
+  will-change:transform;
 }
 
 /* FUNCIONES SIN MINIATURA GRANDE VISIBLE */
@@ -220,7 +257,7 @@ body{
   position:relative;
   border-bottom:1px solid rgba(139,53,255,.18);
   cursor:pointer;
-  transition:.18s ease;
+  transition:background .18s ease,box-shadow .18s ease;
 }
 
 .features li:last-child{
@@ -232,13 +269,13 @@ body{
   box-shadow:inset 0 0 18px rgba(255,29,47,.22);
 }
 
-/* Vista previa flotante PC */
+/* Preview flotante PC: no redimensiona la imagen original, evita lag */
 .features li::after{
   content:"";
   position:fixed;
   right:24px;
   top:50%;
-  transform:translateY(-50%) scale(.94);
+  transform:translateY(-50%) scale(.96);
   width:320px;
   height:440px;
   background-image:var(--preview-img);
@@ -249,14 +286,13 @@ body{
   border:2px solid rgba(255,29,47,.8);
   border-radius:16px;
   box-shadow:
-    0 0 22px rgba(255,29,47,.7),
-    0 0 38px rgba(139,53,255,.45);
+    0 0 18px rgba(255,29,47,.65),
+    0 0 28px rgba(139,53,255,.42);
   opacity:0;
   pointer-events:none;
   z-index:99999;
-  transition:
-    opacity .14s ease,
-    transform .14s ease;
+  transition:opacity .14s ease,transform .14s ease;
+  will-change:opacity,transform;
 }
 
 .features li:hover::after{
@@ -303,10 +339,76 @@ body{
   background:#25D366;
   z-index:9999;
   box-shadow:0 0 30px rgba(37,211,102,.75);
+  animation:floatPulse 1.8s ease-in-out infinite;
 }
 
 .whatsapp-float img{
   width:34px;
+}
+
+/* ANIMACIONES OPTIMIZADAS */
+@keyframes panelGlow{
+  from{box-shadow:0 0 20px rgba(139,53,255,.22),0 0 20px rgba(255,29,47,.12)}
+  to{box-shadow:0 0 35px rgba(139,53,255,.45),0 0 35px rgba(255,29,47,.25)}
+}
+
+@keyframes brandGlow{
+  from{filter:drop-shadow(0 0 8px rgba(255,29,47,.55))}
+  to{filter:drop-shadow(0 0 16px rgba(139,53,255,.75))}
+}
+
+@keyframes logoFloat{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-6px) scale(1.04)}
+}
+
+@keyframes logoGlow{
+  from{
+    filter:
+      drop-shadow(0 0 10px rgba(255,29,47,.65))
+      drop-shadow(0 0 18px rgba(139,53,255,.55));
+  }
+  to{
+    filter:
+      drop-shadow(0 0 18px rgba(255,29,47,.95))
+      drop-shadow(0 0 30px rgba(139,53,255,.9));
+  }
+}
+
+@keyframes logoRotate{
+  0%,100%{rotate:0deg}
+  25%{rotate:-2deg}
+  75%{rotate:2deg}
+}
+
+@keyframes dotPulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.55;transform:scale(1.16)}
+}
+
+@keyframes whatsappGlow{
+  from{box-shadow:0 0 10px rgba(37,211,102,.35)}
+  to{box-shadow:0 0 22px rgba(37,211,102,.75)}
+}
+
+@keyframes shine{
+  0%{left:-80%}
+  55%,100%{left:130%}
+}
+
+@keyframes iconBounce{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-3px) scale(1.08)}
+}
+
+@keyframes floatPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.06)}
+}
+
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-10px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 /* CELULAR: preview pequeña, no ocupa toda la pantalla */
@@ -407,6 +509,14 @@ body{
     bottom:72px;
   }
 }
+
+/* Si el usuario tiene reducir movimiento activado, se apagan animaciones pesadas */
+@media(prefers-reduced-motion:reduce){
+  *{
+    animation:none!important;
+    transition:none!important;
+  }
+}
 </style>
 </head>
 
@@ -443,7 +553,7 @@ body{
     </div>
 
     <div class="card">
-      <div class="icon"><i class="fa-solid fa-circle" style="color:#00ff66"></i></div>
+      <div class="icon"><i class="fa-solid fa-circle online-dot"></i></div>
       <div class="content">
         <small>ESTADO</small>
         <span class="online">ONLINE</span>
@@ -584,7 +694,7 @@ function draw(){
   }
 }
 
-setInterval(draw,40);
+setInterval(draw,50);
 
 window.addEventListener("resize",()=>{
   resize();
