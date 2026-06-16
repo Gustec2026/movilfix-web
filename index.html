@@ -17,6 +17,9 @@
   --purple2:#c04cff;
   --white:#f4efff;
   --muted:#bcaee0;
+  --online:#00ff66;
+  --xiaomi:#ff6900;
+  --signal:#00e0ff;
 }
 
 *{
@@ -85,6 +88,17 @@ body{
   position:relative;
 }
 
+.dashboard::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:26px;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,var(--red),transparent 35%,transparent 65%,var(--purple)) top/100% 2px no-repeat,
+    linear-gradient(90deg,var(--red),transparent 35%,transparent 65%,var(--purple)) bottom/100% 2px no-repeat;
+}
+
 .left,.right{
   position:relative;
   z-index:1;
@@ -109,6 +123,39 @@ body{
   filter:
     drop-shadow(0 0 7px rgba(255,29,47,.8))
     drop-shadow(0 0 12px rgba(139,53,255,.8));
+}
+
+.status-online{
+  color:var(--online);
+  font-size:14px;
+  filter:
+    drop-shadow(0 0 6px var(--online))
+    drop-shadow(0 0 12px var(--online));
+  animation:pulseOnline 1.5s infinite;
+}
+
+.online-text{
+  color:var(--online) !important;
+  font-weight:700;
+  text-shadow:
+    0 0 6px var(--online),
+    0 0 12px var(--online);
+}
+
+.signal-icon{
+  color:var(--signal);
+  filter:
+    drop-shadow(0 0 6px var(--signal))
+    drop-shadow(0 0 12px var(--signal));
+}
+
+.xiaomi-icon img{
+  width:24px;
+  height:24px;
+  object-fit:contain;
+  filter:
+    drop-shadow(0 0 6px var(--xiaomi))
+    drop-shadow(0 0 12px var(--xiaomi));
 }
 
 .brand{
@@ -192,7 +239,6 @@ body{
   font-size:12px;
 }
 
-.info:nth-child(2) span,
 .info:nth-child(4) span{
   color:var(--purple2);
 }
@@ -247,10 +293,19 @@ body{
     0 0 40px rgba(18,140,126,.35);
 }
 
+.btn-whatsapp:hover{
+  box-shadow:
+    0 0 30px rgba(37,211,102,.85),
+    0 0 55px rgba(18,140,126,.55);
+}
+
 .whatsapp-icon img{
   width:34px;
   height:34px;
   object-fit:contain;
+  filter:
+    drop-shadow(0 0 8px rgba(37,211,102,.85))
+    drop-shadow(0 0 16px rgba(37,211,102,.55));
 }
 
 .credits{
@@ -321,6 +376,18 @@ body{
   position:relative;
 }
 
+.logo-frame::before{
+  content:"";
+  position:absolute;
+  width:70%;
+  height:70%;
+  border-radius:50%;
+  background:
+    radial-gradient(circle,rgba(139,53,255,.28),transparent 60%),
+    radial-gradient(circle,rgba(255,29,47,.22),transparent 65%);
+  filter:blur(18px);
+}
+
 .logo-frame img{
   width:min(380px,85%);
   position:relative;
@@ -358,10 +425,42 @@ footer span{
   box-shadow:
     0 0 22px rgba(37,211,102,.9),
     0 0 35px rgba(139,53,255,.65);
+  animation:pulse 1.8s infinite;
 }
 
 .whatsapp-float img{
   width:36px;
+}
+
+@keyframes pulse{
+  0%{
+    box-shadow:0 0 0 0 rgba(37,211,102,.75),0 0 30px rgba(139,53,255,.65);
+  }
+
+  70%{
+    box-shadow:0 0 0 18px rgba(37,211,102,0),0 0 30px rgba(139,53,255,.65);
+  }
+
+  100%{
+    box-shadow:0 0 0 0 rgba(37,211,102,0),0 0 30px rgba(139,53,255,.65);
+  }
+}
+
+@keyframes pulseOnline{
+  0%{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  50%{
+    opacity:.55;
+    transform:scale(1.25);
+  }
+
+  100%{
+    opacity:1;
+    transform:scale(1);
+  }
 }
 
 @media(max-width:980px){
@@ -371,6 +470,14 @@ footer span{
 
   .right{
     order:-1;
+  }
+
+  .logo-frame{
+    min-height:auto;
+  }
+
+  .logo-frame img{
+    width:min(300px,85%);
   }
 
   .info-grid{
@@ -385,13 +492,72 @@ footer span{
     display:flex;
     justify-content:center;
   }
+}
 
-  .logo-frame{
-    min-height:auto;
+@media(max-width:768px){
+  .dashboard{
+    padding:14px;
+    gap:14px;
+  }
+
+  .brand{
+    font-size:36px;
+    letter-spacing:2px;
+  }
+
+  .subtitle{
+    font-size:12px;
+    letter-spacing:2px;
+  }
+
+  .btn strong{
+    font-size:16px;
+  }
+
+  .btn small{
+    font-size:10px;
+  }
+
+  .features span:last-child{
+    font-size:11px;
   }
 
   .logo-frame img{
-    width:min(300px,85%);
+    width:min(260px,80%);
+  }
+}
+
+@media(max-width:520px){
+  .wrapper{
+    padding:12px;
+  }
+
+  .dashboard{
+    padding:14px;
+  }
+
+  .btn{
+    grid-template-columns:54px 1fr;
+  }
+
+  .whatsapp-icon img{
+    width:28px;
+    height:28px;
+  }
+
+  .features li{
+    grid-template-columns:50px 1fr;
+  }
+
+  .whatsapp-float{
+    width:56px;
+    height:56px;
+    right:14px;
+    bottom:14px;
+  }
+
+  .whatsapp-float img{
+    width:32px;
   }
 }
 </style>
@@ -411,7 +577,7 @@ footer span{
 
 <div class="badge">
 <i class="fa-solid fa-shield-halved real-icon"></i>
-MOVILFIX DNS | CENTRO OFICIAL
+MOVILFIX DNS&nbsp; | &nbsp;CENTRO OFICIAL
 </div>
 
 <h1 class="brand">MOVILFIX</h1>
@@ -424,7 +590,9 @@ MOVILFIX DNS | CENTRO OFICIAL
 <div class="info-grid">
 
 <div class="info">
-<div class="info-icon"><i class="fa-solid fa-gears real-icon"></i></div>
+<div class="info-icon">
+<i class="fa-solid fa-gears real-icon"></i>
+</div>
 <div class="info-text">
 <small>SOFTWARE</small>
 <span>MOVILFIX Tool v3.0.0</span>
@@ -432,15 +600,19 @@ MOVILFIX DNS | CENTRO OFICIAL
 </div>
 
 <div class="info">
-<div class="info-icon"><i class="fa-solid fa-shield-halved real-icon"></i></div>
+<div class="info-icon">
+<i class="fa-solid fa-circle status-online"></i>
+</div>
 <div class="info-text">
 <small>ESTADO</small>
-<span>ONLINE</span>
+<span class="online-text">ONLINE</span>
 </div>
 </div>
 
 <div class="info">
-<div class="info-icon"><i class="fa-solid fa-file-arrow-down real-icon"></i></div>
+<div class="info-icon">
+<i class="fa-solid fa-file-arrow-down real-icon"></i>
+</div>
 <div class="info-text">
 <small>ARCHIVO</small>
 <span>MOVILFIX_INSTALLER_3.0.0.exe</span>
@@ -448,7 +620,9 @@ MOVILFIX DNS | CENTRO OFICIAL
 </div>
 
 <div class="info">
-<div class="info-icon"><i class="fa-solid fa-hard-drive real-icon"></i></div>
+<div class="info-icon">
+<i class="fa-solid fa-hard-drive real-icon"></i>
+</div>
 <div class="info-text">
 <small>TAMAÑO</small>
 <span>38.9 MB</span>
@@ -484,7 +658,11 @@ rel="noopener noreferrer">
 </a>
 
 <div class="credits">
-<strong><i class="fa-solid fa-star real-icon"></i> CRÉDITOS:</strong><br>
+<strong>
+<i class="fa-solid fa-star real-icon"></i>
+CRÉDITOS:
+</strong>
+<br>
 MOVILFIX GUSTEC 2026
 </div>
 
@@ -501,40 +679,58 @@ MOVILFIX GUSTEC 2026
 </div>
 
 <ul class="features">
+
 <li>
-<span class="feature-icon"><i class="fa-solid fa-mobile-screen-button real-icon"></i></span>
+<span class="feature-icon">
+<i class="fa-solid fa-mobile-screen-button real-icon"></i>
+</span>
 <span>MODE KIOSKO SIN DNS</span>
 </li>
 
 <li>
-<span class="feature-icon"><i class="fa-solid fa-lock real-icon"></i></span>
+<span class="feature-icon">
+<i class="fa-solid fa-lock real-icon"></i>
+</span>
 <span>MODE CLARO/TELCEL SIN DNS</span>
 </li>
 
 <li>
-<span class="feature-icon"><i class="fa-solid fa-desktop real-icon"></i></span>
+<span class="feature-icon">
+<i class="fa-solid fa-desktop real-icon"></i>
+</span>
 <span>MODE MOTOROLA PANTALLA BLANCA SIN DNS</span>
 </li>
 
 <li>
-<span class="feature-icon"><i class="fa-solid fa-eye real-icon"></i></span>
+<span class="feature-icon xiaomi-icon">
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg"
+alt="Xiaomi">
+</span>
 <span>XIAOMI PATCH CUENTA MI</span>
 </li>
 
 <li>
-<span class="feature-icon"><i class="fa-solid fa-gear real-icon"></i></span>
+<span class="feature-icon">
+<i class="fa-solid fa-gear real-icon"></i>
+</span>
 <span>EDITOR HXD AUTOMÁTICO</span>
 </li>
 
 <li>
-<span class="feature-icon"><i class="fa-solid fa-unlock-keyhole real-icon"></i></span>
+<span class="feature-icon">
+<i class="fa-solid fa-signal signal-icon"></i>
+</span>
 <span>UNLOCK RED OPPO</span>
 </li>
 
 <li>
-<span class="feature-icon"><i class="fa-solid fa-rotate real-icon"></i></span>
+<span class="feature-icon">
+<i class="fa-solid fa-rotate real-icon"></i>
+</span>
 <span>ASEGÚRATE DE USAR LA ÚLTIMA ACTUALIZACIÓN</span>
 </li>
+
 </ul>
 
 </div>
@@ -574,6 +770,7 @@ let drops = Array(columns).fill(1);
 function draw(){
   ctx.fillStyle = "rgba(0,0,0,.08)";
   ctx.fillRect(0,0,canvas.width,canvas.height);
+
   ctx.font = fontSize + "px monospace";
 
   for(let i=0;i<drops.length;i++){
