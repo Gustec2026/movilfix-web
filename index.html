@@ -202,7 +202,7 @@ body{
   height:28px;
 }
 
-/* FUNCIONES: SIN MINIATURA VISIBLE */
+/* FUNCIONES SIN MINIATURA GRANDE VISIBLE */
 .features{
   list-style:none;
   border:1px solid rgba(139,53,255,.25);
@@ -232,12 +232,13 @@ body{
   box-shadow:inset 0 0 18px rgba(255,29,47,.22);
 }
 
+/* Vista previa flotante PC */
 .features li::after{
   content:"";
   position:fixed;
   right:24px;
   top:50%;
-  transform:translateY(-50%);
+  transform:translateY(-50%) scale(.94);
   width:320px;
   height:440px;
   background-image:var(--preview-img);
@@ -253,11 +254,14 @@ body{
   opacity:0;
   pointer-events:none;
   z-index:99999;
-  transition:opacity .12s ease;
+  transition:
+    opacity .14s ease,
+    transform .14s ease;
 }
 
 .features li:hover::after{
   opacity:1;
+  transform:translateY(-50%) scale(1);
 }
 
 .feature-icon{
@@ -286,11 +290,6 @@ body{
   line-height:1.3;
 }
 
-.signal{
-  color:#00d4ff;
-  font-size:24px;
-}
-
 .whatsapp-float{
   position:fixed;
   right:20px;
@@ -310,6 +309,7 @@ body{
   width:34px;
 }
 
+/* CELULAR: preview pequeña, no ocupa toda la pantalla */
 @media(max-width:900px){
   .container{
     padding:12px;
@@ -350,6 +350,10 @@ body{
     grid-template-columns:1fr;
   }
 
+  .features{
+    overflow:visible;
+  }
+
   .features li{
     grid-template-columns:52px 1fr;
     min-height:58px;
@@ -360,13 +364,27 @@ body{
   }
 
   .features li::after{
-    left:50%;
-    right:auto;
-    top:50%;
-    transform:translate(-50%,-50%);
-    width:82vw;
-    max-width:330px;
-    height:70vh;
+    left:auto;
+    right:10px;
+    top:auto;
+    bottom:82px;
+    transform:scale(.96);
+    width:150px;
+    height:230px;
+    max-width:42vw;
+    max-height:38vh;
+    border-radius:12px;
+    border:1px solid rgba(255,29,47,.75);
+    box-shadow:
+      0 0 14px rgba(255,29,47,.65),
+      0 0 22px rgba(139,53,255,.4);
+  }
+
+  .features li:hover::after,
+  .features li:active::after,
+  .features li:focus-within::after{
+    opacity:1;
+    transform:scale(1);
   }
 
   .whatsapp-float{
@@ -378,6 +396,15 @@ body{
 
   .whatsapp-float img{
     width:30px;
+  }
+}
+
+@media(max-width:420px){
+  .features li::after{
+    width:130px;
+    height:205px;
+    right:8px;
+    bottom:72px;
   }
 }
 </style>
@@ -464,49 +491,49 @@ body{
 
   <ul class="features">
 
-    <li style="--preview-img:url('assets/kiosko.png')">
+    <li style="--preview-img:url('assets/kiosko.png')" tabindex="0">
       <div class="feature-icon">
         <img class="feature-img" src="assets/kiosko.png" alt="Kiosko">
       </div>
       <div class="feature-title">MODE KIOSKO SIN DNS</div>
     </li>
 
-    <li style="--preview-img:url('assets/claro-telcel.png')">
+    <li style="--preview-img:url('assets/claro-telcel.png')" tabindex="0">
       <div class="feature-icon">
         <img class="feature-img" src="assets/claro-telcel.png" alt="Claro Telcel">
       </div>
       <div class="feature-title">MODE CLARO/TELCEL SIN DNS</div>
     </li>
 
-    <li style="--preview-img:url('assets/motorola-blanca.png')">
+    <li style="--preview-img:url('assets/motorola-blanca.png')" tabindex="0">
       <div class="feature-icon">
         <img class="feature-img" src="assets/motorola-blanca.png" alt="Motorola">
       </div>
       <div class="feature-title">MODE MOTOROLA PANTALLA BLANCA SIN DNS</div>
     </li>
 
-    <li style="--preview-img:url('https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg')">
+    <li style="--preview-img:url('https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg')" tabindex="0">
       <div class="feature-icon">
         <img class="feature-img" src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi">
       </div>
       <div class="feature-title">XIAOMI PATCH CUENTA MI</div>
     </li>
 
-    <li style="--preview-img:url('assets/hxd.png')">
+    <li style="--preview-img:url('assets/hxd.png')" tabindex="0">
       <div class="feature-icon">
         <img class="feature-img" src="assets/hxd.png" alt="HxD">
       </div>
       <div class="feature-title">EDITOR HXD AUTOMÁTICO</div>
     </li>
 
-    <li style="--preview-img:url('assets/unlock-red-oppo.jpeg')">
+    <li style="--preview-img:url('assets/unlock-red-oppo.jpeg')" tabindex="0">
       <div class="feature-icon">
         <img class="feature-img" src="assets/unlock-red-oppo.jpeg" alt="Unlock Red Oppo">
       </div>
       <div class="feature-title">UNLOCK RED OPPO</div>
     </li>
 
-    <li style="--preview-img:url('assets/logo.png')">
+    <li style="--preview-img:url('assets/logo.png')" tabindex="0">
       <div class="feature-icon">
         <i class="fa-solid fa-rotate"></i>
       </div>
