@@ -50,7 +50,7 @@ animation:bgMove 6s infinite alternate ease-in-out;
 .container{
 max-width:1200px;
 margin:auto;
-padding:20px;
+padding:18px;
 min-height:100vh;
 display:flex;
 align-items:center;
@@ -59,9 +59,9 @@ align-items:center;
 .panel{
 width:100%;
 display:grid;
-grid-template-columns:1.15fr 0.85fr;
-gap:20px;
-padding:20px;
+grid-template-columns:1.05fr .95fr;
+gap:18px;
+padding:18px;
 border-radius:24px;
 background:rgba(8,3,18,.9);
 border:1px solid rgba(139,53,255,.4);
@@ -73,23 +73,23 @@ animation:panelGlow 3s infinite alternate;
 display:inline-flex;
 gap:10px;
 align-items:center;
-padding:8px 14px;
+padding:7px 13px;
 border:1px solid rgba(255,29,47,.5);
 border-radius:8px;
-margin-bottom:16px;
-font-size:12px;
+margin-bottom:12px;
+font-size:11px;
 }
 
 .brand-row{
 display:flex;
 align-items:center;
-gap:22px;
-margin-top:10px;
-margin-bottom:10px;
+gap:16px;
+margin-top:6px;
+margin-bottom:6px;
 }
 
 .brand{
-font-size:clamp(42px,7vw,72px);
+font-size:clamp(38px,6vw,64px);
 background:linear-gradient(90deg,var(--red),var(--purple));
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -98,8 +98,8 @@ animation:neonPulse 2s infinite alternate;
 }
 
 .brand-logo{
-width:118px;
-max-width:24vw;
+width:95px;
+max-width:20vw;
 filter:
 drop-shadow(0 0 15px rgba(255,29,47,.8))
 drop-shadow(0 0 25px rgba(139,53,255,.8));
@@ -107,40 +107,40 @@ animation:logoFloat 4s ease-in-out infinite;
 }
 
 .subtitle{
-font-size:14px;
+font-size:12px;
 letter-spacing:3px;
-margin-top:8px;
+margin-top:6px;
 color:#d7d2ff;
 }
 
 .section{
-margin:20px 0 12px;
-font-size:20px;
+margin:16px 0 10px;
+font-size:18px;
 }
 
-/* ACTUALIZACIONES MEJORADO */
+/* ACTUALIZACIONES MÁS COMPACTO */
 .grid{
 display:grid;
-grid-template-columns:repeat(2,minmax(180px,1fr));
-gap:12px;
+grid-template-columns:repeat(2,minmax(160px,1fr));
+gap:10px;
 }
 
 .card{
 display:grid;
-grid-template-columns:76px 1fr;
-min-height:78px;
+grid-template-columns:58px 1fr;
+min-height:58px;
 border:1px solid rgba(139,53,255,.35);
-border-radius:14px;
+border-radius:13px;
 overflow:hidden;
 transition:.25s;
 background:rgba(8,3,18,.72);
 }
 
 .card:hover{
-transform:translateY(-4px);
+transform:translateY(-3px);
 box-shadow:
-0 0 18px rgba(139,53,255,.45),
-0 0 20px rgba(255,29,47,.22);
+0 0 16px rgba(139,53,255,.45),
+0 0 18px rgba(255,29,47,.22);
 }
 
 .icon{
@@ -148,7 +148,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 background:rgba(139,53,255,.18);
-font-size:28px;
+font-size:22px;
 color:#f4efff;
 }
 
@@ -158,17 +158,8 @@ drop-shadow(0 0 8px rgba(255,29,47,.55))
 drop-shadow(0 0 10px rgba(139,53,255,.45));
 }
 
-.update-img{
-width:46px;
-height:46px;
-object-fit:contain;
-filter:
-drop-shadow(0 0 8px rgba(255,29,47,.55))
-drop-shadow(0 0 10px rgba(139,53,255,.45));
-}
-
 .content{
-padding:13px 12px;
+padding:9px 10px;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -176,13 +167,13 @@ justify-content:center;
 
 .content small{
 display:block;
-font-size:11px;
+font-size:9px;
 color:#bbb;
-margin-bottom:6px;
+margin-bottom:5px;
 }
 
 .content span{
-font-size:13px;
+font-size:11px;
 color:#ff4b5f;
 word-break:break-word;
 }
@@ -194,16 +185,17 @@ text-shadow:0 0 12px var(--green);
 
 .online-dot{
 color:var(--green);
-font-size:30px;
+font-size:25px;
 animation:pulse 1.4s infinite;
 }
 
+/* BOTONES MÁS PEQUEÑOS */
 .btn{
 display:grid;
-grid-template-columns:60px 1fr;
+grid-template-columns:54px 1fr;
 align-items:center;
-margin-top:16px;
-min-height:70px;
+margin-top:12px;
+min-height:58px;
 border-radius:12px;
 text-decoration:none;
 color:#fff;
@@ -213,11 +205,11 @@ position:relative;
 }
 
 .btn:hover{
-transform:translateY(-4px) scale(1.02);
+transform:translateY(-3px) scale(1.015);
 }
 
 .btn .icon{
-font-size:24px;
+font-size:22px;
 background:rgba(0,0,0,.15);
 }
 
@@ -243,8 +235,8 @@ animation:shine 2.8s infinite;
 }
 
 .whatsapp-btn-img{
-width:32px;
-height:32px;
+width:28px;
+height:28px;
 object-fit:contain;
 filter:drop-shadow(0 0 8px rgba(37,211,102,.9));
 animation:iconBounce 1.5s infinite;
@@ -252,13 +244,14 @@ animation:iconBounce 1.5s infinite;
 
 .btn strong{
 display:block;
-font-size:18px;
+font-size:15px;
 }
 
 .btn small{
-font-size:11px;
+font-size:9px;
 }
 
+/* FUNCIONES INCLUIDAS */
 .features{
 list-style:none;
 border:1px solid rgba(139,53,255,.25);
@@ -350,8 +343,8 @@ display:block;
 position:fixed;
 right:20px;
 bottom:20px;
-width:65px;
-height:65px;
+width:60px;
+height:60px;
 border-radius:50%;
 display:flex;
 align-items:center;
@@ -368,7 +361,7 @@ transform:scale(1.12);
 }
 
 .whatsapp-float img{
-width:36px;
+width:34px;
 }
 
 @keyframes pulse{
@@ -467,37 +460,33 @@ text-align:center;
 
 .grid{
 grid-template-columns:1fr;
+gap:9px;
 }
 
 .card{
-grid-template-columns:70px 1fr;
-min-height:74px;
+grid-template-columns:54px 1fr;
+min-height:56px;
 }
 
 .icon{
-font-size:26px;
-}
-
-.update-img{
-width:42px;
-height:42px;
+font-size:21px;
 }
 
 .content span{
-font-size:12px;
+font-size:11px;
 }
 
 .btn{
-grid-template-columns:52px 1fr;
-min-height:62px;
+grid-template-columns:50px 1fr;
+min-height:56px;
 }
 
 .btn strong{
-font-size:15px;
+font-size:14px;
 }
 
 .btn small{
-font-size:9px;
+font-size:8px;
 }
 
 .features{
@@ -571,9 +560,7 @@ MOVILFIX DNS | CENTRO OFICIAL
 <div class="grid">
 
 <div class="card">
-<div class="icon">
-<i class="fa-solid fa-gears"></i>
-</div>
+<div class="icon"><i class="fa-solid fa-gears"></i></div>
 <div class="content">
 <small>SOFTWARE</small>
 <span>MOVILFIX Tool v3.0.0</span>
@@ -581,9 +568,7 @@ MOVILFIX DNS | CENTRO OFICIAL
 </div>
 
 <div class="card">
-<div class="icon">
-<i class="fa-solid fa-circle online-dot"></i>
-</div>
+<div class="icon"><i class="fa-solid fa-circle online-dot"></i></div>
 <div class="content">
 <small>ESTADO</small>
 <span class="online">ONLINE</span>
@@ -591,9 +576,7 @@ MOVILFIX DNS | CENTRO OFICIAL
 </div>
 
 <div class="card">
-<div class="icon">
-<i class="fa-solid fa-file-arrow-down"></i>
-</div>
+<div class="icon"><i class="fa-solid fa-file-arrow-down"></i></div>
 <div class="content">
 <small>ARCHIVO</small>
 <span>MOVILFIX_INSTALLER_3.0.0.exe</span>
@@ -601,9 +584,7 @@ MOVILFIX DNS | CENTRO OFICIAL
 </div>
 
 <div class="card">
-<div class="icon">
-<i class="fa-solid fa-hard-drive"></i>
-</div>
+<div class="icon"><i class="fa-solid fa-hard-drive"></i></div>
 <div class="content">
 <small>TAMAÑO</small>
 <span>38.9 MB</span>
