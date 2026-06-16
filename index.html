@@ -118,49 +118,73 @@ margin:20px 0 12px;
 font-size:20px;
 }
 
+/* ACTUALIZACIONES MEJORADO */
 .grid{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
+grid-template-columns:repeat(2,minmax(180px,1fr));
+gap:12px;
 }
 
 .card{
 display:grid;
-grid-template-columns:50px 1fr;
-min-height:64px;
-border:1px solid rgba(139,53,255,.25);
-border-radius:12px;
+grid-template-columns:76px 1fr;
+min-height:78px;
+border:1px solid rgba(139,53,255,.35);
+border-radius:14px;
 overflow:hidden;
 transition:.25s;
+background:rgba(8,3,18,.72);
 }
 
 .card:hover{
 transform:translateY(-4px);
-box-shadow:0 0 18px rgba(139,53,255,.45);
+box-shadow:
+0 0 18px rgba(139,53,255,.45),
+0 0 20px rgba(255,29,47,.22);
 }
 
 .icon{
 display:flex;
 align-items:center;
 justify-content:center;
-background:rgba(139,53,255,.12);
-font-size:18px;
+background:rgba(139,53,255,.18);
+font-size:28px;
+color:#f4efff;
+}
+
+.icon i{
+filter:
+drop-shadow(0 0 8px rgba(255,29,47,.55))
+drop-shadow(0 0 10px rgba(139,53,255,.45));
+}
+
+.update-img{
+width:46px;
+height:46px;
+object-fit:contain;
+filter:
+drop-shadow(0 0 8px rgba(255,29,47,.55))
+drop-shadow(0 0 10px rgba(139,53,255,.45));
 }
 
 .content{
-padding:10px;
+padding:13px 12px;
+display:flex;
+flex-direction:column;
+justify-content:center;
 }
 
 .content small{
 display:block;
-font-size:10px;
+font-size:11px;
 color:#bbb;
-margin-bottom:4px;
+margin-bottom:6px;
 }
 
 .content span{
-font-size:12px;
+font-size:13px;
 color:#ff4b5f;
+word-break:break-word;
 }
 
 .online{
@@ -170,6 +194,7 @@ text-shadow:0 0 12px var(--green);
 
 .online-dot{
 color:var(--green);
+font-size:30px;
 animation:pulse 1.4s infinite;
 }
 
@@ -445,8 +470,21 @@ grid-template-columns:1fr;
 }
 
 .card{
-grid-template-columns:44px 1fr;
-min-height:58px;
+grid-template-columns:70px 1fr;
+min-height:74px;
+}
+
+.icon{
+font-size:26px;
+}
+
+.update-img{
+width:42px;
+height:42px;
+}
+
+.content span{
+font-size:12px;
 }
 
 .btn{
@@ -533,7 +571,9 @@ MOVILFIX DNS | CENTRO OFICIAL
 <div class="grid">
 
 <div class="card">
-<div class="icon"><i class="fa-solid fa-gears"></i></div>
+<div class="icon">
+<i class="fa-solid fa-gears"></i>
+</div>
 <div class="content">
 <small>SOFTWARE</small>
 <span>MOVILFIX Tool v3.0.0</span>
@@ -541,7 +581,9 @@ MOVILFIX DNS | CENTRO OFICIAL
 </div>
 
 <div class="card">
-<div class="icon"><i class="fa-solid fa-circle online-dot"></i></div>
+<div class="icon">
+<i class="fa-solid fa-circle online-dot"></i>
+</div>
 <div class="content">
 <small>ESTADO</small>
 <span class="online">ONLINE</span>
@@ -549,7 +591,9 @@ MOVILFIX DNS | CENTRO OFICIAL
 </div>
 
 <div class="card">
-<div class="icon"><i class="fa-solid fa-file-arrow-down"></i></div>
+<div class="icon">
+<i class="fa-solid fa-file-arrow-down"></i>
+</div>
 <div class="content">
 <small>ARCHIVO</small>
 <span>MOVILFIX_INSTALLER_3.0.0.exe</span>
@@ -557,7 +601,9 @@ MOVILFIX DNS | CENTRO OFICIAL
 </div>
 
 <div class="card">
-<div class="icon"><i class="fa-solid fa-hard-drive"></i></div>
+<div class="icon">
+<i class="fa-solid fa-hard-drive"></i>
+</div>
 <div class="content">
 <small>TAMAÑO</small>
 <span>38.9 MB</span>
