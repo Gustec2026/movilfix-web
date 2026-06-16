@@ -223,17 +223,18 @@ animation:logoFloat 3s ease-in-out infinite;
 list-style:none;
 border:1px solid rgba(139,53,255,.25);
 border-radius:12px;
-overflow:hidden;
+overflow:visible;
 }
 
 .features li{
 display:grid;
-grid-template-columns:56px 1fr;
-min-height:50px;
+grid-template-columns:64px 1fr;
+min-height:58px;
 align-items:center;
 border-bottom:1px solid rgba(139,53,255,.2);
 transition:.25s;
 position:relative;
+background:rgba(8,3,18,.55);
 }
 
 .features li:last-child{
@@ -244,6 +245,7 @@ border-bottom:none;
 background:rgba(139,53,255,.12);
 transform:translateX(6px);
 box-shadow:0 0 15px rgba(255,29,47,.25);
+z-index:20;
 }
 
 .feature-icon{
@@ -259,19 +261,28 @@ border-right:1px solid rgba(139,53,255,.2);
 animation:iconPulse 2s infinite alternate;
 }
 
-.signal{
-color:#00d4ff;
+.feature-img{
+width:38px;
+height:38px;
+object-fit:cover;
+border-radius:9px;
+background:#111;
+border:1px solid rgba(255,255,255,.18);
+box-shadow:
+0 0 10px rgba(255,29,47,.5),
+0 0 16px rgba(139,53,255,.35);
 }
 
 .xiaomi img,
-.hxd img,
-.carrier img,
-.motorola img,
-.kiosko img{
-width:24px;
-height:24px;
-object-fit:cover;
-border-radius:5px;
+.hxd img{
+width:28px;
+height:28px;
+object-fit:contain;
+border-radius:6px;
+}
+
+.signal{
+color:#00d4ff;
 }
 
 .preview-box{
@@ -516,7 +527,7 @@ MOVILFIX DNS | CENTRO OFICIAL
 
 <li>
 <div class="feature-icon kiosko">
-<img src="assets/kiosko.png" alt="Modo Kiosko">
+<img class="feature-img" src="assets/kiosko.png" alt="Modo Kiosko">
 </div>
 <div>MODE KIOSKO SIN DNS</div>
 <div class="preview-box">
@@ -526,7 +537,7 @@ MOVILFIX DNS | CENTRO OFICIAL
 
 <li>
 <div class="feature-icon carrier">
-<img src="assets/claro-telcel.png" alt="Claro Telcel">
+<img class="feature-img" src="assets/claro-telcel.png" alt="Claro Telcel">
 </div>
 <div>MODE CLARO/TELCEL SIN DNS</div>
 <div class="preview-box">
@@ -536,11 +547,11 @@ MOVILFIX DNS | CENTRO OFICIAL
 
 <li>
 <div class="feature-icon motorola">
-<img src="assets/motorola-blanca.jpeg" alt="Motorola Pantalla Blanca">
+<img class="feature-img" src="assets/motorola-blanca.png" alt="Motorola Pantalla Blanca">
 </div>
 <div>MODE MOTOROLA PANTALLA BLANCA SIN DNS</div>
 <div class="preview-box">
-<img src="assets/motorola-blanca.jpg" alt="Vista previa Motorola">
+<img src="assets/motorola-blanca.png" alt="Vista previa Motorola">
 </div>
 </li>
 
