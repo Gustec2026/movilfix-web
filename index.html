@@ -6,792 +6,302 @@
 <title>MOVILFIX DNS - DESCARGAS</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-
 :root{
-  --red:#ff1d2f;
-  --red2:#ff4b5f;
-  --purple:#8b35ff;
-  --purple2:#c04cff;
-  --white:#f4efff;
-  --muted:#bcaee0;
-  --online:#00ff66;
-  --xiaomi:#ff6900;
-  --signal:#00e0ff;
+--red:#ff1d2f;
+--purple:#8b35ff;
+--green:#00ff66;
+--bg:#05010b;
+--text:#f4efff;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Share Tech Mono',monospace;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Share Tech Mono',monospace}
+body{background:#000;color:var(--text);overflow-x:hidden}
+
+#matrix{position:fixed;inset:0;z-index:-2}
+.overlay{
+position:fixed;inset:0;z-index:-1;
+background:
+radial-gradient(circle at 20% 20%,rgba(255,29,47,.22),transparent 30%),
+radial-gradient(circle at 80% 20%,rgba(139,53,255,.22),transparent 30%),
+#000;
 }
 
-body{
-  min-height:100vh;
-  background:#000;
-  color:var(--white);
-  overflow-x:hidden;
-}
+.container{max-width:1200px;margin:auto;padding:20px;min-height:100vh;display:flex;align-items:center}
 
-#matrix{
-  position:fixed;
-  inset:0;
-  z-index:-4;
-}
-
-.bg{
-  position:fixed;
-  inset:0;
-  z-index:-3;
-  background:
-    radial-gradient(circle at 25% 20%, rgba(255,29,47,.25), transparent 30%),
-    radial-gradient(circle at 75% 25%, rgba(139,53,255,.32), transparent 32%),
-    radial-gradient(circle at 50% 100%, rgba(192,76,255,.18), transparent 40%),
-    rgba(0,0,0,.91);
-}
-
-.hex{
-  position:fixed;
-  inset:0;
-  z-index:-2;
-  background-image:
-    linear-gradient(30deg, rgba(255,29,47,.06) 12%, transparent 12.5%, transparent 87%, rgba(255,29,47,.06) 87.5%, rgba(255,29,47,.06)),
-    linear-gradient(150deg, rgba(139,53,255,.06) 12%, transparent 12.5%, transparent 87%, rgba(139,53,255,.06) 87.5%, rgba(139,53,255,.06));
-  background-size:80px 140px;
-  opacity:.75;
-}
-
-.wrapper{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-}
-
-.dashboard{
-  width:min(1240px,100%);
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-  padding:20px;
-  border:1px solid rgba(139,53,255,.35);
-  border-radius:26px;
-  background:linear-gradient(180deg,rgba(6,2,14,.82),rgba(0,0,0,.88));
-  box-shadow:
-    0 0 35px rgba(255,29,47,.35),
-    0 0 55px rgba(139,53,255,.35),
-    inset 0 0 35px rgba(139,53,255,.08);
-  position:relative;
-}
-
-.dashboard::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:26px;
-  pointer-events:none;
-  background:
-    linear-gradient(90deg,var(--red),transparent 35%,transparent 65%,var(--purple)) top/100% 2px no-repeat,
-    linear-gradient(90deg,var(--red),transparent 35%,transparent 65%,var(--purple)) bottom/100% 2px no-repeat;
-}
-
-.left,.right{
-  position:relative;
-  z-index:1;
+.panel{
+width:100%;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+padding:20px;
+border-radius:24px;
+background:rgba(8,3,18,.9);
+border:1px solid rgba(139,53,255,.4);
+box-shadow:0 0 30px rgba(139,53,255,.25),0 0 30px rgba(255,29,47,.2);
 }
 
 .badge{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:8px 14px;
-  border:1px solid rgba(255,29,47,.55);
-  border-radius:8px;
-  background:linear-gradient(90deg,rgba(255,29,47,.20),rgba(139,53,255,.20));
-  color:#fff;
-  margin-bottom:18px;
-  box-shadow:0 0 18px rgba(139,53,255,.25);
-  font-size:12px;
-}
-
-.real-icon{
-  color:#fff;
-  filter:
-    drop-shadow(0 0 7px rgba(255,29,47,.8))
-    drop-shadow(0 0 12px rgba(139,53,255,.8));
-}
-
-.status-online{
-  color:var(--online);
-  font-size:14px;
-  filter:
-    drop-shadow(0 0 6px var(--online))
-    drop-shadow(0 0 12px var(--online));
-  animation:pulseOnline 1.5s infinite;
-}
-
-.online-text{
-  color:var(--online) !important;
-  font-weight:700;
-  text-shadow:
-    0 0 6px var(--online),
-    0 0 12px var(--online);
-}
-
-.signal-icon{
-  color:var(--signal);
-  filter:
-    drop-shadow(0 0 6px var(--signal))
-    drop-shadow(0 0 12px var(--signal));
-}
-
-.xiaomi-icon img{
-  width:24px;
-  height:24px;
-  object-fit:contain;
-  filter:
-    drop-shadow(0 0 6px var(--xiaomi))
-    drop-shadow(0 0 12px var(--xiaomi));
+display:inline-flex;gap:10px;align-items:center;
+padding:8px 14px;
+border:1px solid rgba(255,29,47,.5);
+border-radius:8px;
+margin-bottom:16px;
+font-size:12px;
 }
 
 .brand{
-  font-size:clamp(42px,6vw,72px);
-  line-height:.95;
-  letter-spacing:4px;
-  background:linear-gradient(90deg,var(--red),var(--red2),var(--purple2),var(--purple));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  filter:
-    drop-shadow(0 0 8px rgba(255,29,47,.85))
-    drop-shadow(0 0 18px rgba(139,53,255,.85));
+font-size:clamp(42px,7vw,72px);
+background:linear-gradient(90deg,var(--red),var(--purple));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 20px rgba(255,29,47,.4);
 }
 
-.subtitle{
-  margin-top:12px;
-  letter-spacing:3px;
-  color:#ddd7ff;
-  font-size:14px;
+.subtitle{font-size:14px;letter-spacing:3px;margin-top:8px;color:#d7d2ff}
+
+.section{margin:24px 0 14px;font-size:22px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+.card{
+display:grid;grid-template-columns:50px 1fr;
+min-height:64px;
+border:1px solid rgba(139,53,255,.25);
+border-radius:12px;
+overflow:hidden;
 }
 
-.section-title{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin:26px 0 14px;
+.icon{
+display:flex;align-items:center;justify-content:center;
+background:rgba(139,53,255,.12);
+font-size:18px;
 }
 
-.section-title::before,
-.section-title::after{
-  content:"";
-  height:2px;
-  flex:1;
-  background:linear-gradient(90deg,transparent,var(--red),var(--purple),transparent);
-}
+.content{padding:10px}
+.content small{display:block;font-size:10px;color:#bbb;margin-bottom:4px}
+.content span{font-size:12px;color:#ff4b5f}
 
-.section-title h2{
-  font-size:22px;
-  color:#f4efff;
-  text-shadow:0 0 12px rgba(139,53,255,.8);
-}
-
-.info-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.info{
-  display:grid;
-  grid-template-columns:48px 1fr;
-  min-height:64px;
-  border:1px solid rgba(139,53,255,.25);
-  background:rgba(255,255,255,.025);
-  border-radius:12px;
-  overflow:hidden;
-}
-
-.info-icon{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:20px;
-  border-right:1px solid rgba(139,53,255,.22);
-  background:linear-gradient(180deg,rgba(255,29,47,.12),rgba(139,53,255,.12));
-}
-
-.info-text{
-  padding:10px;
-}
-
-.info-text small{
-  display:block;
-  color:#ddd7ff;
-  margin-bottom:4px;
-  font-size:10px;
-}
-
-.info-text span{
-  color:var(--red2);
-  font-size:12px;
-}
-
-.info:nth-child(4) span{
-  color:var(--purple2);
-}
+.online{color:var(--green)!important;text-shadow:0 0 12px var(--green)}
+.online-dot{color:var(--green);animation:pulse 1.4s infinite}
 
 .btn{
-  display:grid;
-  grid-template-columns:64px 1fr;
-  align-items:center;
-  text-decoration:none;
-  margin-top:18px;
-  min-height:68px;
-  border-radius:12px;
-  color:#fff;
-  overflow:hidden;
-  border:1px solid rgba(255,29,47,.7);
-  background:linear-gradient(135deg,rgba(255,29,47,.95),rgba(110,0,20,.8));
-  box-shadow:
-    0 0 22px rgba(255,29,47,.65),
-    inset 0 0 28px rgba(255,255,255,.08);
-  transition:.25s;
+display:grid;grid-template-columns:60px 1fr;
+align-items:center;
+margin-top:16px;
+padding:0;
+min-height:70px;
+border-radius:12px;
+text-decoration:none;
+color:#fff;
+overflow:hidden;
 }
 
-.btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 0 38px rgba(255,29,47,.85);
+.btn .icon{font-size:24px;background:rgba(0,0,0,.15)}
+.download{background:linear-gradient(135deg,var(--red),#840019)}
+.whatsapp{background:linear-gradient(135deg,#25D366,#128C7E)}
+
+.btn strong{display:block;font-size:18px}
+.btn small{font-size:11px}
+
+.logo{
+display:flex;align-items:center;justify-content:center;
+min-height:320px;
 }
 
-.btn-icon{
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  border-right:1px solid rgba(255,255,255,.20);
+.logo img{
+width:min(360px,90%);
+filter:drop-shadow(0 0 20px rgba(255,29,47,.8)) drop-shadow(0 0 30px rgba(139,53,255,.8));
 }
 
-.btn strong{
-  font-size:20px;
-  display:block;
-}
-
-.btn small{
-  color:#ffd6dd;
-  font-size:11px;
-}
-
-.btn-whatsapp{
-  border:1px solid rgba(37,211,102,.75);
-  background:linear-gradient(135deg,#25D366,#128C7E);
-  box-shadow:
-    0 0 20px rgba(37,211,102,.55),
-    0 0 40px rgba(18,140,126,.35);
-}
-
-.btn-whatsapp:hover{
-  box-shadow:
-    0 0 30px rgba(37,211,102,.85),
-    0 0 55px rgba(18,140,126,.55);
-}
-
-.whatsapp-icon img{
-  width:34px;
-  height:34px;
-  object-fit:contain;
-  filter:
-    drop-shadow(0 0 8px rgba(37,211,102,.85))
-    drop-shadow(0 0 16px rgba(37,211,102,.55));
-}
-
-.credits{
-  margin-top:18px;
-  border:1px dashed rgba(255,29,47,.70);
-  border-radius:12px;
-  padding:16px;
-  color:#fff;
-  background:rgba(255,29,47,.035);
-  font-size:12px;
-}
-
-.credits strong{
-  color:var(--red2);
-  font-size:16px;
-}
-
-.features{
-  list-style:none;
-  display:grid;
-  gap:0;
-  border:1px solid rgba(139,53,255,.35);
-  border-radius:12px;
-  overflow:hidden;
-}
-
+.features{list-style:none;border:1px solid rgba(139,53,255,.25);border-radius:12px;overflow:hidden}
 .features li{
-  display:grid;
-  grid-template-columns:56px 1fr;
-  align-items:center;
-  min-height:48px;
-  background:rgba(255,255,255,.025);
-  border-bottom:1px solid rgba(139,53,255,.22);
-  transition:.25s;
+display:grid;
+grid-template-columns:56px 1fr;
+min-height:50px;
+align-items:center;
+border-bottom:1px solid rgba(139,53,255,.2);
 }
-
-.features li:last-child{
-  border-bottom:none;
-}
-
-.features li:hover{
-  background:rgba(139,53,255,.10);
-  transform:translateX(4px);
-}
+.features li:last-child{border-bottom:none}
 
 .feature-icon{
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:20px;
-  border-right:1px solid rgba(139,53,255,.25);
+display:flex;align-items:center;justify-content:center;height:100%;
+border-right:1px solid rgba(139,53,255,.2);
 }
 
-.features span:last-child{
-  color:#f7f2ff;
-  letter-spacing:.5px;
-  padding-left:12px;
-  font-size:12px;
+.feature-icon i{
+filter:drop-shadow(0 0 8px rgba(255,29,47,.8));
 }
 
-.logo-frame{
-  width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:360px;
-  position:relative;
-}
-
-.logo-frame::before{
-  content:"";
-  position:absolute;
-  width:70%;
-  height:70%;
-  border-radius:50%;
-  background:
-    radial-gradient(circle,rgba(139,53,255,.28),transparent 60%),
-    radial-gradient(circle,rgba(255,29,47,.22),transparent 65%);
-  filter:blur(18px);
-}
-
-.logo-frame img{
-  width:min(380px,85%);
-  position:relative;
-  z-index:2;
-  filter:
-    drop-shadow(0 0 20px rgba(255,29,47,.85))
-    drop-shadow(0 0 42px rgba(139,53,255,.85));
-}
-
-footer{
-  grid-column:1/-1;
-  text-align:center;
-  margin-top:14px;
-  color:var(--muted);
-  letter-spacing:1px;
-  font-size:11px;
-}
-
-footer span{
-  color:var(--red2);
-}
+.signal{color:#00d4ff}
+.xiaomi img,.hxd img,.carrier img{width:24px;height:24px;object-fit:contain}
 
 .whatsapp-float{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  width:62px;
-  height:62px;
-  border-radius:50%;
-  background:#25D366;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:999;
-  box-shadow:
-    0 0 22px rgba(37,211,102,.9),
-    0 0 35px rgba(139,53,255,.65);
-  animation:pulse 1.8s infinite;
+position:fixed;right:20px;bottom:20px;
+width:60px;height:60px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+background:#25D366;
+box-shadow:0 0 25px rgba(37,211,102,.8);
 }
-
-.whatsapp-float img{
-  width:36px;
-}
+.whatsapp-float img{width:34px}
 
 @keyframes pulse{
-  0%{
-    box-shadow:0 0 0 0 rgba(37,211,102,.75),0 0 30px rgba(139,53,255,.65);
-  }
-
-  70%{
-    box-shadow:0 0 0 18px rgba(37,211,102,0),0 0 30px rgba(139,53,255,.65);
-  }
-
-  100%{
-    box-shadow:0 0 0 0 rgba(37,211,102,0),0 0 30px rgba(139,53,255,.65);
-  }
+50%{opacity:.5;transform:scale(1.2)}
 }
 
-@keyframes pulseOnline{
-  0%{
-    opacity:1;
-    transform:scale(1);
-  }
-
-  50%{
-    opacity:.55;
-    transform:scale(1.25);
-  }
-
-  100%{
-    opacity:1;
-    transform:scale(1);
-  }
-}
-
-@media(max-width:980px){
-  .dashboard{
-    grid-template-columns:1fr;
-  }
-
-  .right{
-    order:-1;
-  }
-
-  .logo-frame{
-    min-height:auto;
-  }
-
-  .logo-frame img{
-    width:min(300px,85%);
-  }
-
-  .info-grid{
-    grid-template-columns:1fr;
-  }
-
-  .brand,.subtitle{
-    text-align:center;
-  }
-
-  .badge{
-    display:flex;
-    justify-content:center;
-  }
-}
-
-@media(max-width:768px){
-  .dashboard{
-    padding:14px;
-    gap:14px;
-  }
-
-  .brand{
-    font-size:36px;
-    letter-spacing:2px;
-  }
-
-  .subtitle{
-    font-size:12px;
-    letter-spacing:2px;
-  }
-
-  .btn strong{
-    font-size:16px;
-  }
-
-  .btn small{
-    font-size:10px;
-  }
-
-  .features span:last-child{
-    font-size:11px;
-  }
-
-  .logo-frame img{
-    width:min(260px,80%);
-  }
-}
-
-@media(max-width:520px){
-  .wrapper{
-    padding:12px;
-  }
-
-  .dashboard{
-    padding:14px;
-  }
-
-  .btn{
-    grid-template-columns:54px 1fr;
-  }
-
-  .whatsapp-icon img{
-    width:28px;
-    height:28px;
-  }
-
-  .features li{
-    grid-template-columns:50px 1fr;
-  }
-
-  .whatsapp-float{
-    width:56px;
-    height:56px;
-    right:14px;
-    bottom:14px;
-  }
-
-  .whatsapp-float img{
-    width:32px;
-  }
+@media(max-width:900px){
+.panel{grid-template-columns:1fr}
+.logo{min-height:auto}
+.grid{grid-template-columns:1fr}
 }
 </style>
 </head>
-
 <body>
 
 <canvas id="matrix"></canvas>
-<div class="bg"></div>
-<div class="hex"></div>
+<div class="overlay"></div>
 
-<main class="wrapper">
+<div class="container">
+<div class="panel">
 
-<section class="dashboard">
-
-<div class="left">
-
-<div class="badge">
-<i class="fa-solid fa-shield-halved real-icon"></i>
-MOVILFIX DNS&nbsp; | &nbsp;CENTRO OFICIAL
-</div>
+<div>
+<div class="badge"><i class="fa-solid fa-shield-halved"></i> MOVILFIX DNS | CENTRO OFICIAL</div>
 
 <h1 class="brand">MOVILFIX</h1>
 <p class="subtitle">CENTRO DE DESCARGA OFICIAL</p>
 
-<div class="section-title">
-<h2>ACTUALIZACIONES</h2>
+<h2 class="section">ACTUALIZACIONES</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="icon"><i class="fa-solid fa-gears"></i></div>
+<div class="content"><small>SOFTWARE</small><span>MOVILFIX Tool v3.0.0</span></div>
 </div>
 
-<div class="info-grid">
-
-<div class="info">
-<div class="info-icon">
-<i class="fa-solid fa-gears real-icon"></i>
-</div>
-<div class="info-text">
-<small>SOFTWARE</small>
-<span>MOVILFIX Tool v3.0.0</span>
-</div>
+<div class="card">
+<div class="icon"><i class="fa-solid fa-circle online-dot"></i></div>
+<div class="content"><small>ESTADO</small><span class="online">ONLINE</span></div>
 </div>
 
-<div class="info">
-<div class="info-icon">
-<i class="fa-solid fa-circle status-online"></i>
-</div>
-<div class="info-text">
-<small>ESTADO</small>
-<span class="online-text">ONLINE</span>
-</div>
+<div class="card">
+<div class="icon"><i class="fa-solid fa-file-arrow-down"></i></div>
+<div class="content"><small>ARCHIVO</small><span>MOVILFIX_INSTALLER_3.0.0.exe</span></div>
 </div>
 
-<div class="info">
-<div class="info-icon">
-<i class="fa-solid fa-file-arrow-down real-icon"></i>
-</div>
-<div class="info-text">
-<small>ARCHIVO</small>
-<span>MOVILFIX_INSTALLER_3.0.0.exe</span>
-</div>
-</div>
-
-<div class="info">
-<div class="info-icon">
-<i class="fa-solid fa-hard-drive real-icon"></i>
-</div>
-<div class="info-text">
-<small>TAMAÑO</small>
-<span>38.9 MB</span>
-</div>
+<div class="card">
+<div class="icon"><i class="fa-solid fa-hard-drive"></i></div>
+<div class="content"><small>TAMAÑO</small><span>38.9 MB</span></div>
 </div>
 
 </div>
 
-<a class="btn"
-href="https://github.com/Gustec2026/movilfix-web/releases/download/v3.0.0/MOVILFIX_INSTALLER_3.0.0.exe"
-target="_blank"
-rel="noopener noreferrer">
-<div class="btn-icon">
-<i class="fa-solid fa-download real-icon"></i>
-</div>
-<div>
-<strong>DESCARGAR TOOL</strong>
-<small>DESCARGA SEGURA</small>
-</div>
+<a class="btn download" href="https://github.com/Gustec2026/movilfix-web/releases/download/v3.0.0/MOVILFIX_INSTALLER_3.0.0.exe">
+<div class="icon"><i class="fa-solid fa-download"></i></div>
+<div><strong>DESCARGAR TOOL</strong><small>DESCARGA SEGURA</small></div>
 </a>
 
-<a class="btn btn-whatsapp"
-href="https://chat.whatsapp.com/DJ6UVv5EK0jBgGuDYhZDqr"
-target="_blank"
-rel="noopener noreferrer">
-<div class="btn-icon whatsapp-icon">
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-</div>
-<div>
-<strong>UNIRSE AL GRUPO OFICIAL</strong>
-<small>COMUNIDAD OFICIAL DE MOVILFIX</small>
-</div>
+<a class="btn whatsapp" href="https://chat.whatsapp.com/DJ6UVv5EK0jBgGuDYhZDqr">
+<div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="30"></div>
+<div><strong>UNIRSE AL GRUPO OFICIAL</strong><small>COMUNIDAD MOVILFIX</small></div>
 </a>
 
-<div class="credits">
-<strong>
-<i class="fa-solid fa-star real-icon"></i>
-CRÉDITOS:
-</strong>
-<br>
-MOVILFIX GUSTEC 2026
 </div>
 
+<div>
+
+<div class="logo">
+<img src="assets/logo.png" alt="MOVILFIX">
 </div>
 
-<div class="right">
-
-<div class="logo-frame">
-<img src="assets/logo.png" alt="MOVILFIX Logo">
-</div>
-
-<div class="section-title">
-<h2>FUNCIONES INCLUIDAS</h2>
-</div>
+<h2 class="section">FUNCIONES INCLUIDAS</h2>
 
 <ul class="features">
 
 <li>
-<span class="feature-icon">
-<i class="fa-solid fa-mobile-screen-button real-icon"></i>
-</span>
-<span>MODE KIOSKO SIN DNS</span>
+<div class="feature-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+<div>MODE KIOSKO SIN DNS</div>
 </li>
 
 <li>
-<span class="feature-icon">
-<i class="fa-solid fa-lock real-icon"></i>
-</span>
-<span>MODE CLARO/TELCEL SIN DNS</span>
+<div class="feature-icon carrier"><img src="assets/claro-telcel.png"></div>
+<div>MODE CLARO/TELCEL SIN DNS</div>
 </li>
 
 <li>
-<span class="feature-icon">
-<i class="fa-solid fa-desktop real-icon"></i>
-</span>
-<span>MODE MOTOROLA PANTALLA BLANCA SIN DNS</span>
+<div class="feature-icon"><i class="fa-solid fa-desktop"></i></div>
+<div>MODE MOTOROLA PANTALLA BLANCA SIN DNS</div>
 </li>
 
 <li>
-<span class="feature-icon xiaomi-icon">
-<img
-src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg"
-alt="Xiaomi">
-</span>
-<span>XIAOMI PATCH CUENTA MI</span>
+<div class="feature-icon xiaomi"><img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg"></div>
+<div>XIAOMI PATCH CUENTA MI</div>
 </li>
 
 <li>
-<span class="feature-icon">
-<i class="fa-solid fa-gear real-icon"></i>
-</span>
-<span>EDITOR HXD AUTOMÁTICO</span>
+<div class="feature-icon hxd"><img src="assets/hxd.png"></div>
+<div>EDITOR HXD AUTOMÁTICO</div>
 </li>
 
 <li>
-<span class="feature-icon">
-<i class="fa-solid fa-signal signal-icon"></i>
-</span>
-<span>UNLOCK RED OPPO</span>
+<div class="feature-icon"><i class="fa-solid fa-signal signal"></i></div>
+<div>UNLOCK RED OPPO</div>
 </li>
 
 <li>
-<span class="feature-icon">
-<i class="fa-solid fa-rotate real-icon"></i>
-</span>
-<span>ASEGÚRATE DE USAR LA ÚLTIMA ACTUALIZACIÓN</span>
+<div class="feature-icon"><i class="fa-solid fa-rotate"></i></div>
+<div>ASEGÚRATE DE USAR LA ÚLTIMA ACTUALIZACIÓN</div>
 </li>
 
 </ul>
 
 </div>
 
-<footer>
-© 2026 <span>MOVILFIX</span>. TODOS LOS DERECHOS RESERVADOS.
-</footer>
+</div>
+</div>
 
-</section>
-
-</main>
-
-<a class="whatsapp-float"
-href="https://chat.whatsapp.com/DJ6UVv5EK0jBgGuDYhZDqr"
-target="_blank"
-rel="noopener noreferrer">
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+<a class="whatsapp-float" href="https://chat.whatsapp.com/DJ6UVv5EK0jBgGuDYhZDqr">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 </a>
 
 <script>
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
 
-function resizeCanvas(){
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+function resize(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 }
+resize();
 
-resizeCanvas();
-
-const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const fontSize = 18;
-
-let columns = Math.floor(canvas.width / fontSize);
-let drops = Array(columns).fill(1);
+const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const size=18;
+let cols=Math.floor(canvas.width/size);
+let drops=Array(cols).fill(1);
 
 function draw(){
-  ctx.fillStyle = "rgba(0,0,0,.08)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(0,0,0,.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.font=size+"px monospace";
 
-  ctx.font = fontSize + "px monospace";
+for(let i=0;i<drops.length;i++){
+const text=chars[Math.floor(Math.random()*chars.length)];
+ctx.fillStyle=i%2===0?"#ff1d2f":"#8b35ff";
+ctx.fillText(text,i*size,drops[i]*size);
 
-  for(let i=0;i<drops.length;i++){
-    const text = chars[Math.floor(Math.random() * chars.length)];
-    ctx.fillStyle = i % 2 === 0 ? "#ff1d2f" : "#8b35ff";
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-    if(drops[i] * fontSize > canvas.height && Math.random() > .975){
-      drops[i] = 0;
-    }
-
-    drops[i]++;
-  }
+if(drops[i]*size>canvas.height&&Math.random()>.975){drops[i]=0;}
+drops[i]++;
+}
 }
 
 setInterval(draw,40);
 
 window.addEventListener("resize",()=>{
-  resizeCanvas();
-  columns = Math.floor(canvas.width / fontSize);
-  drops = Array(columns).fill(1);
+resize();
+cols=Math.floor(canvas.width/size);
+drops=Array(cols).fill(1);
 });
 </script>
 
