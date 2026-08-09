@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MOVILFIX  - DESCARGAS</title>
+<meta name="theme-color" content="#080312">
+<meta name="description" content="Página oficial de descargas y novedades de MOVILFIX Tool">
+<title>MOVILFIX | Descargas Oficiales</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +15,16 @@
 <style>
 :root{
   --red:#ff1d2f;
+  --red2:#840019;
   --purple:#8b35ff;
+  --purple2:#4b168f;
   --green:#00ff66;
+  --yellow:#ffb74d;
+  --muted:#aaa3b5;
   --text:#f4efff;
+  --panel:rgba(8,3,18,.92);
+  --panel-soft:rgba(139,53,255,.08);
+  --border:rgba(139,53,255,.30);
 }
 
 *{
@@ -25,10 +34,16 @@
   font-family:'Share Tech Mono',monospace;
 }
 
+html{scroll-behavior:smooth}
+
 body{
   background:#000;
   color:var(--text);
   overflow-x:hidden;
+}
+
+button,a{
+  -webkit-tap-highlight-color:transparent;
 }
 
 #matrix{
@@ -64,7 +79,7 @@ body{
   gap:18px;
   padding:18px;
   border-radius:24px;
-  background:rgba(8,3,18,.92);
+  background:var(--panel);
   border:1px solid rgba(139,53,255,.35);
   box-shadow:
     0 0 30px rgba(139,53,255,.25),
@@ -110,7 +125,6 @@ body{
     logoFloat 3.5s ease-in-out infinite,
     logoGlow 2s ease-in-out infinite alternate,
     logoRotate 8s ease-in-out infinite;
-  will-change:transform,filter;
 }
 
 .subtitle{
@@ -134,16 +148,17 @@ body{
 .card{
   display:grid;
   grid-template-columns:56px 1fr;
-  min-height:56px;
+  min-height:62px;
   border-radius:12px;
   overflow:hidden;
-  background:rgba(139,53,255,.08);
+  background:var(--panel-soft);
   border:1px solid rgba(139,53,255,.25);
-  transition:transform .18s ease,box-shadow .18s ease;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
 }
 
 .card:hover{
   transform:translateY(-2px);
+  border-color:rgba(255,29,47,.45);
   box-shadow:0 0 16px rgba(139,53,255,.35);
 }
 
@@ -177,8 +192,16 @@ body{
   text-shadow:0 0 10px var(--green);
 }
 
+.offline{
+  color:#ff5e69!important;
+}
+
+.checking{
+  color:var(--yellow)!important;
+}
+
 .online-dot{
-  color:#00ff66;
+  color:var(--yellow);
   animation:dotPulse 1.4s ease-in-out infinite;
 }
 
@@ -192,7 +215,7 @@ body{
   text-decoration:none;
   border-radius:12px;
   overflow:hidden;
-  transition:transform .18s ease,filter .18s ease;
+  transition:transform .18s ease,filter .18s ease,box-shadow .18s ease;
 }
 
 .btn:hover{
@@ -201,7 +224,13 @@ body{
 }
 
 .download{
-  background:linear-gradient(135deg,var(--red),#840019);
+  background:linear-gradient(135deg,var(--red),var(--red2));
+  box-shadow:0 0 18px rgba(255,29,47,.20);
+}
+
+.qr{
+  background:linear-gradient(135deg,var(--purple),var(--purple2));
+  box-shadow:0 0 18px rgba(139,53,255,.18);
 }
 
 .whatsapp{
@@ -236,10 +265,85 @@ body{
   width:28px;
   height:28px;
   animation:iconBounce 1.6s ease-in-out infinite;
-  will-change:transform;
 }
 
-/* FUNCIONES SIN MINIATURA GRANDE VISIBLE */
+.integrity{
+  margin-top:12px;
+  padding:12px;
+  border:1px solid rgba(139,53,255,.25);
+  border-radius:12px;
+  background:rgba(8,3,18,.55);
+}
+
+.integrity-row{
+  display:grid;
+  grid-template-columns:110px 1fr auto;
+  gap:8px;
+  align-items:center;
+  padding:6px 0;
+  border-bottom:1px solid rgba(139,53,255,.12);
+  font-size:10px;
+}
+
+.integrity-row:last-child{
+  border-bottom:none;
+}
+
+.integrity-label{
+  color:#a99dbd;
+}
+
+.integrity-value{
+  color:#eee6ff;
+  overflow-wrap:anywhere;
+}
+
+.copy-btn{
+  border:1px solid rgba(139,53,255,.5);
+  background:#14051D;
+  color:#fff;
+  padding:5px 8px;
+  border-radius:7px;
+  cursor:pointer;
+  font-size:9px;
+}
+
+.copy-btn:hover{
+  background:#251038;
+}
+
+.release-notes{
+  margin-top:12px;
+  padding:12px;
+  border:1px solid rgba(255,29,47,.25);
+  border-radius:12px;
+  background:rgba(255,29,47,.04);
+}
+
+.release-notes h3{
+  font-size:13px;
+  color:#ff7280;
+  margin-bottom:8px;
+}
+
+.release-notes ul{
+  padding-left:18px;
+  color:#d9d0e8;
+  font-size:10px;
+  line-height:1.55;
+}
+
+.tag{
+  display:inline-block;
+  margin-left:7px;
+  padding:2px 6px;
+  border-radius:999px;
+  font-size:8px;
+  color:#fff;
+  background:linear-gradient(90deg,var(--red),var(--purple));
+  vertical-align:middle;
+}
+
 .features{
   list-style:none;
   border:1px solid rgba(139,53,255,.25);
@@ -260,16 +364,13 @@ body{
   transition:background .18s ease,box-shadow .18s ease;
 }
 
-.features li:last-child{
-  border-bottom:none;
-}
+.features li:last-child{border-bottom:none}
 
 .features li:hover{
   background:rgba(139,53,255,.15);
   box-shadow:inset 0 0 18px rgba(255,29,47,.22);
 }
 
-/* Preview flotante PC: no redimensiona la imagen original, evita lag */
 .features li::after{
   content:"";
   position:fixed;
@@ -292,7 +393,6 @@ body{
   pointer-events:none;
   z-index:99999;
   transition:opacity .14s ease,transform .14s ease;
-  will-change:opacity,transform;
 }
 
 .features li:hover::after{
@@ -327,6 +427,17 @@ body{
   line-height:1.3;
 }
 
+.portal-note{
+  margin-top:12px;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid rgba(139,53,255,.3);
+  background:rgba(139,53,255,.06);
+  font-size:10px;
+  color:#d8ccef;
+  line-height:1.5;
+}
+
 .whatsapp-float{
   position:fixed;
   right:20px;
@@ -343,11 +454,8 @@ body{
   animation:floatPulse 1.8s ease-in-out infinite;
 }
 
-.whatsapp-float img{
-  width:34px;
-}
+.whatsapp-float img{width:34px}
 
-/* ANIMACIONES OPTIMIZADAS */
 @keyframes panelGlow{
   from{box-shadow:0 0 20px rgba(139,53,255,.22),0 0 20px rgba(255,29,47,.12)}
   to{box-shadow:0 0 35px rgba(139,53,255,.45),0 0 35px rgba(255,29,47,.25)}
@@ -412,7 +520,6 @@ body{
   to{opacity:1;transform:translateY(0)}
 }
 
-/* CELULAR: preview pequeña, no ocupa toda la pantalla */
 @media(max-width:900px){
   .container{
     padding:12px;
@@ -444,27 +551,15 @@ body{
     max-width:70px;
   }
 
-  .subtitle,
-  .section{
-    text-align:center;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .features{
-    overflow:visible;
-  }
+  .subtitle,.section{text-align:center}
+  .grid{grid-template-columns:1fr}
 
   .features li{
     grid-template-columns:52px 1fr;
     min-height:58px;
   }
 
-  .feature-title{
-    font-size:11px;
-  }
+  .feature-title{font-size:11px}
 
   .features li::after{
     left:auto;
@@ -490,6 +585,15 @@ body{
     transform:scale(1);
   }
 
+  .integrity-row{
+    grid-template-columns:90px 1fr;
+  }
+
+  .copy-btn{
+    grid-column:1 / -1;
+    justify-self:end;
+  }
+
   .whatsapp-float{
     width:52px;
     height:52px;
@@ -497,9 +601,7 @@ body{
     bottom:12px;
   }
 
-  .whatsapp-float img{
-    width:30px;
-  }
+  .whatsapp-float img{width:30px}
 }
 
 @media(max-width:420px){
@@ -511,28 +613,27 @@ body{
   }
 }
 
-/* Si el usuario tiene reducir movimiento activado, se apagan animaciones pesadas */
 @media(prefers-reduced-motion:reduce){
   *{
     animation:none!important;
     transition:none!important;
+    scroll-behavior:auto!important;
   }
 }
 </style>
 </head>
 
 <body>
-
-<canvas id="matrix"></canvas>
+<canvas id="matrix" aria-hidden="true"></canvas>
 <div class="overlay"></div>
 
 <div class="container">
 <div class="panel">
 
-<div>
+<section>
   <div class="badge">
     <i class="fa-solid fa-shield-halved"></i>
-    MOVILFIX  | PAGINA OFICIAL
+    MOVILFIX | PÁGINA OFICIAL
   </div>
 
   <div class="brand-row">
@@ -540,24 +641,24 @@ body{
     <img class="brand-logo" src="assets/logo.png" alt="MOVILFIX">
   </div>
 
-  <p class="subtitle">PAGINA DE DESCARGA OFICIAL</p>
+  <p class="subtitle">DESCARGAS · ESTADO · NOVEDADES</p>
 
-  <h2 class="section">ACTUALIZACIONES</h2>
+  <h2 class="section">ACTUALIZACIÓN DISPONIBLE</h2>
 
   <div class="grid">
     <div class="card">
       <div class="icon"><i class="fa-solid fa-gears"></i></div>
       <div class="content">
         <small>SOFTWARE</small>
-        <span>MOVILFIX Tool v3.4.9</span>
+        <span id="versionText">MOVILFIX Tool</span>
       </div>
     </div>
 
     <div class="card">
-      <div class="icon"><i class="fa-solid fa-circle online-dot"></i></div>
+      <div class="icon"><i id="statusDot" class="fa-solid fa-circle online-dot"></i></div>
       <div class="content">
-        <small>ESTADO</small>
-        <span class="online">ONLINE</span>
+        <small>SERVIDOR</small>
+        <span id="serverStatus" class="checking">VERIFICANDO...</span>
       </div>
     </div>
 
@@ -565,24 +666,32 @@ body{
       <div class="icon"><i class="fa-solid fa-file-arrow-down"></i></div>
       <div class="content">
         <small>ARCHIVO</small>
-        <span>MOVILFIX_INSTALLER_3.4.9.exe</span>
+        <span id="fileText">MOVILFIX_INSTALLER.exe</span>
       </div>
     </div>
 
     <div class="card">
-      <div class="icon"><i class="fa-solid fa-hard-drive"></i></div>
+      <div class="icon"><i class="fa-solid fa-calendar-check"></i></div>
       <div class="content">
-        <small>TAMAÑO</small>
-        <span>229 MB</span>
+        <small>PUBLICADO</small>
+        <span id="releaseDateText">09/08/2026</span>
       </div>
     </div>
   </div>
 
-  <a class="btn download" href="https://github.com/Gustec2026/movilfix-web/releases/download/v3.4.0/MOVILFIX_INSTALLER_3.4.9.exe" target="_blank" rel="noopener noreferrer">
+  <a id="downloadBtn" class="btn download" href="#" target="_blank" rel="noopener noreferrer">
     <div class="icon"><i class="fa-solid fa-download"></i></div>
     <div>
       <strong>DESCARGAR TOOL</strong>
-      <small>DESCARGA SEGURA</small>
+      <small>DESCARGA OFICIAL</small>
+    </div>
+  </a>
+
+  <a class="btn qr" href="#qr-device-owner">
+    <div class="icon"><i class="fa-solid fa-qrcode"></i></div>
+    <div>
+      <strong>QR DEVICE OWNER</strong>
+      <small>APROVISIONAMIENTO MOVILFIX GUARD</small>
     </div>
   </a>
 
@@ -592,29 +701,78 @@ body{
     </div>
     <div>
       <strong>UNIRSE AL GRUPO OFICIAL</strong>
-      <small>🔥 COMUNIDAD MOVILFIX 🔥</small>
+      <small>COMUNIDAD MOVILFIX</small>
     </div>
   </a>
-</div>
 
-<div>
+  <div class="integrity">
+    <div class="integrity-row">
+      <span class="integrity-label">TAMAÑO</span>
+      <span id="sizeText" class="integrity-value">229 MB</span>
+    </div>
+    <div class="integrity-row">
+      <span class="integrity-label">SHA-256</span>
+      <span id="shaText" class="integrity-value">PENDIENTE DE PUBLICAR</span>
+      <button id="copySha" class="copy-btn" type="button">COPIAR</button>
+    </div>
+    <div class="integrity-row">
+      <span class="integrity-label">ORIGEN</span>
+      <span class="integrity-value">Release oficial MOVILFIX</span>
+    </div>
+  </div>
+
+  <div class="release-notes">
+    <h3>NOVEDADES <span id="releaseVersionTag"></span></h3>
+    <ul>
+      <li>MOVILFIX Guard integrado en modos SIN DNS.</li>
+      <li>Instalación ADB más discreta y validación por etapas.</li>
+      <li>Device Owner comprobado antes de continuar.</li>
+      <li>Servicio interno iniciado sin abrir la interfaz de la APK.</li>
+      <li>Mejoras de sesión, estabilidad y mensajes profesionales.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
   <h2 class="section">FUNCIONES INCLUIDAS</h2>
 
   <ul class="features">
-
     <li style="--preview-img:url('assets/kiosko.png')" tabindex="0">
       <div class="feature-icon">
         <img class="feature-img" src="assets/kiosko.png" alt="Kiosko">
       </div>
-      <div class="feature-title">MODE KIOSKO SIN DNS</div>
+      <div class="feature-title">
+        MODE KIOSKO SIN DNS <span class="tag">ACTUALIZADO</span>
+      </div>
     </li>
 
     <li style="--preview-img:url('assets/claro-telcel.png')" tabindex="0">
       <div class="feature-icon">
         <img class="feature-img" src="assets/claro-telcel.png" alt="Claro Telcel">
       </div>
-      <div class="feature-title">MODE CLARO/TELCEL SIN DNS</div>
-    </li> 
+      <div class="feature-title">
+        MODE CLARO/TELCEL SIN DNS <span class="tag">ACTUALIZADO</span>
+      </div>
+    </li>
+
+    <li style="--preview-img:url('assets/logo.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-mobile-shield"></i>
+      </div>
+      <div class="feature-title">
+        PAYJOY SIN DNS <span class="tag">NUEVO</span>
+      </div>
+    </li>
+
+    <li style="--preview-img:url('assets/logo.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <div class="feature-title">
+        MOVILFIX GUARD DEVICE OWNER <span class="tag">NUEVO</span>
+      </div>
+    </li>
+
     <li style="--preview-img:url('assets/motorola-blanca.png')" tabindex="0">
       <div class="feature-icon">
         <img class="feature-img" src="assets/motorola-blanca.png" alt="Motorola">
@@ -647,46 +805,155 @@ body{
       <div class="feature-icon">
         <i class="fa-solid fa-rotate"></i>
       </div>
-      <div class="feature-title">AGREGADO ANCLAJE DNS XIAOMI</div>
+      <div class="feature-title">ANCLAJE DNS XIAOMI</div>
     </li>
-
   </ul>
-</div>
+
+  <div id="qr-device-owner" class="portal-note">
+    <strong style="color:#fff">QR DEVICE OWNER</strong><br>
+    Sección preparada para integrar el generador de aprovisionamiento de MOVILFIX Guard.
+    Puedes conectar aquí tu endpoint QR sin modificar el resto del diseño.
+  </div>
+</section>
 
 </div>
 </div>
 
-<a class="whatsapp-float" href="https://chat.whatsapp.com/DJ6UVv5EK0jBgGuDYhZDqr" target="_blank" rel="noopener noreferrer">
+<a class="whatsapp-float" href="https://chat.whatsapp.com/DJ6UVv5EK0jBgGuDYhZDqr" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp MOVILFIX">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
 </a>
 
 <script>
-const canvas=document.getElementById("matrix");
-const ctx=canvas.getContext("2d");
+/*
+  CONFIGURACIÓN CENTRAL.
+  Para una nueva versión cambia solamente estos valores.
+*/
+const MOVILFIX_RELEASE = {
+  version: "3.4.9",
+  fileName: "MOVILFIX_INSTALLER_3.4.9.exe",
+  fileSize: "229 MB",
+  releaseDate: "09/08/2026",
 
-function resize(){
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
+  // Corrige aquí el tag del release real de GitHub si cambia.
+  downloadUrl: "https://github.com/Gustec2026/movilfix-web/releases/download/v3.4.9/MOVILFIX_INSTALLER_3.4.9.exe",
+
+  // Publica aquí el SHA-256 real del instalador.
+  sha256: "PENDIENTE DE PUBLICAR",
+
+  // Debe responder HTTP 200. Si el servidor no permite CORS,
+  // la web mostrará "NO VERIFICADO" en vez de afirmar que está OFFLINE.
+  healthUrl: "https://movilfix.online/health"
+};
+
+function applyReleaseInfo(){
+  document.getElementById("versionText").textContent = `MOVILFIX Tool v${MOVILFIX_RELEASE.version}`;
+  document.getElementById("fileText").textContent = MOVILFIX_RELEASE.fileName;
+  document.getElementById("sizeText").textContent = MOVILFIX_RELEASE.fileSize;
+  document.getElementById("releaseDateText").textContent = MOVILFIX_RELEASE.releaseDate;
+  document.getElementById("shaText").textContent = MOVILFIX_RELEASE.sha256;
+  document.getElementById("downloadBtn").href = MOVILFIX_RELEASE.downloadUrl;
+  document.getElementById("releaseVersionTag").textContent = `v${MOVILFIX_RELEASE.version}`;
 }
 
-resize();
+async function checkServer(){
+  const status = document.getElementById("serverStatus");
+  const dot = document.getElementById("statusDot");
 
-const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const size=18;
-let cols=Math.floor(canvas.width/size);
-let drops=Array(cols).fill(1);
+  status.className = "checking";
+  status.textContent = "VERIFICANDO...";
+  dot.style.color = "#ffb74d";
 
-function draw(){
-  ctx.fillStyle="rgba(0,0,0,.08)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.font=size+"px monospace";
+  try{
+    const controller = new AbortController();
+    const timeout = setTimeout(()=>controller.abort(), 6000);
+
+    const response = await fetch(MOVILFIX_RELEASE.healthUrl, {
+      method:"GET",
+      cache:"no-store",
+      signal:controller.signal
+    });
+
+    clearTimeout(timeout);
+
+    if(response.ok){
+      status.className = "online";
+      status.textContent = "ONLINE";
+      dot.style.color = "#00ff66";
+      return;
+    }
+
+    status.className = "offline";
+    status.textContent = "DEGRADADO";
+    dot.style.color = "#ff5e69";
+  }catch(_err){
+    /*
+      Una web estática puede fallar aquí por CORS aunque el servidor esté vivo.
+      No marcamos OFFLINE sin certeza.
+    */
+    status.className = "checking";
+    status.textContent = "NO VERIFICADO";
+    dot.style.color = "#ffb74d";
+  }
+}
+
+document.getElementById("copySha").addEventListener("click", async ()=>{
+  const value = MOVILFIX_RELEASE.sha256;
+
+  if(!value || value === "PENDIENTE DE PUBLICAR"){
+    alert("Publica primero el SHA-256 real del instalador.");
+    return;
+  }
+
+  try{
+    await navigator.clipboard.writeText(value);
+    const btn = document.getElementById("copySha");
+    const old = btn.textContent;
+    btn.textContent = "COPIADO";
+    setTimeout(()=>btn.textContent=old,1200);
+  }catch(_err){
+    alert(value);
+  }
+});
+
+/* MATRIX OPTIMIZADA: requestAnimationFrame + límite aproximado de 20 FPS */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const size = 18;
+let cols = 0;
+let drops = [];
+let lastFrame = 0;
+const FRAME_INTERVAL = 50;
+
+function resizeMatrix(){
+  const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+  canvas.width = Math.floor(window.innerWidth * dpr);
+  canvas.height = Math.floor(window.innerHeight * dpr);
+  canvas.style.width = window.innerWidth + "px";
+  canvas.style.height = window.innerHeight + "px";
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+
+  cols = Math.floor(window.innerWidth / size);
+  drops = Array(cols).fill(1);
+}
+
+function drawMatrix(now){
+  requestAnimationFrame(drawMatrix);
+
+  if(document.hidden) return;
+  if(now - lastFrame < FRAME_INTERVAL) return;
+  lastFrame = now;
+
+  ctx.fillStyle = "rgba(0,0,0,.08)";
+  ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+  ctx.font = size + "px monospace";
 
   for(let i=0;i<drops.length;i++){
-    const text=chars[Math.floor(Math.random()*chars.length)];
-    ctx.fillStyle=i%2===0 ? "#ff1d2f" : "#8b35ff";
+    const text = chars[Math.floor(Math.random()*chars.length)];
+    ctx.fillStyle = i%2===0 ? "#ff1d2f" : "#8b35ff";
     ctx.fillText(text,i*size,drops[i]*size);
 
-    if(drops[i]*size>canvas.height && Math.random()>.975){
+    if(drops[i]*size > window.innerHeight && Math.random()>.975){
       drops[i]=0;
     }
 
@@ -694,13 +961,19 @@ function draw(){
   }
 }
 
-setInterval(draw,50);
-
+let resizeTimer = null;
 window.addEventListener("resize",()=>{
-  resize();
-  cols=Math.floor(canvas.width/size);
-  drops=Array(cols).fill(1);
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(resizeMatrix,120);
 });
+
+applyReleaseInfo();
+checkServer();
+resizeMatrix();
+requestAnimationFrame(drawMatrix);
+
+/* Revalidación ligera del estado cada 60 segundos. */
+setInterval(checkServer,60000);
 </script>
 
 </body>
