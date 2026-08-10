@@ -658,7 +658,7 @@ button,a{
       <div class="icon"><i id="statusDot" class="fa-solid fa-circle online-dot"></i></div>
       <div class="content">
         <small>SERVIDOR</small>
-        <span id="serverStatus" class="checking">VERIFICANDO...</span>
+        <span id="serverStatus" class="checking">ONLINE...</span>
       </div>
     </div>
 
@@ -829,20 +829,20 @@ button,a{
   Para una nueva versión cambia solamente estos valores.
 */
 const MOVILFIX_RELEASE = {
-  version: "3.4.9",
-  fileName: "MOVILFIX_INSTALLER_3.4.9.exe",
+  version: "4.0.0",
+  fileName: "MOVILFIX_INSTALLER_4.0.0.exe",
   fileSize: "229 MB",
   releaseDate: "09/08/2026",
 
   // Corrige aquí el tag del release real de GitHub si cambia.
-  downloadUrl: "https://github.com/Gustec2026/movilfix-web/releases/download/v3.4.0/MOVILFIX_INSTALLER_3.4.9.exe",
+  downloadUrl: "https://github.com/Gustec2026/movilfix-web/releases/download/v3.4.0/MOVILFIX_INSTALLER_4.0.0.exe",
 
   // Publica aquí el SHA-256 real del instalador.
   sha256: "PENDIENTE DE PUBLICAR",
 
   // Debe responder HTTP 200. Si el servidor no permite CORS,
   // la web mostrará "NO VERIFICADO" en vez de afirmar que está OFFLINE.
-  healthUrl: "https://movilfix.online/health"
+  healthUrl: "4.0.0"
 };
 
 function applyReleaseInfo(){
