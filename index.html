@@ -233,6 +233,13 @@ button,a{
   box-shadow:0 0 18px rgba(139,53,255,.18);
 }
 
+.dns-login{
+  background:linear-gradient(135deg,#5f22b7,#ff1d2f);
+  box-shadow:
+    0 0 18px rgba(139,53,255,.22),
+    0 0 16px rgba(255,29,47,.16);
+}
+
 .whatsapp{
   position:relative;
   background:linear-gradient(135deg,#25D366,#128C7E);
@@ -267,50 +274,19 @@ button,a{
   animation:iconBounce 1.6s ease-in-out infinite;
 }
 
-.integrity{
-  margin-top:12px;
-  padding:12px;
-  border:1px solid rgba(139,53,255,.25);
-  border-radius:12px;
-  background:rgba(8,3,18,.55);
-}
 
-.integrity-row{
-  display:grid;
-  grid-template-columns:110px 1fr auto;
-  gap:8px;
-  align-items:center;
-  padding:6px 0;
-  border-bottom:1px solid rgba(139,53,255,.12);
-  font-size:10px;
-}
 
-.integrity-row:last-child{
-  border-bottom:none;
-}
 
-.integrity-label{
-  color:#a99dbd;
-}
 
-.integrity-value{
-  color:#eee6ff;
-  overflow-wrap:anywhere;
-}
 
-.copy-btn{
-  border:1px solid rgba(139,53,255,.5);
-  background:#14051D;
-  color:#fff;
-  padding:5px 8px;
-  border-radius:7px;
-  cursor:pointer;
-  font-size:9px;
-}
 
-.copy-btn:hover{
-  background:#251038;
-}
+
+
+
+
+
+
+
 
 .release-notes{
   margin-top:12px;
@@ -585,14 +561,9 @@ button,a{
     transform:scale(1);
   }
 
-  .integrity-row{
-    grid-template-columns:90px 1fr;
-  }
+  
 
-  .copy-btn{
-    grid-column:1 / -1;
-    justify-self:end;
-  }
+  
 
   .whatsapp-float{
     width:52px;
@@ -695,6 +666,14 @@ button,a{
     </div>
   </a>
 
+  <a class="btn dns-login" href="/login">
+    <div class="icon"><i class="fa-solid fa-right-to-bracket"></i></div>
+    <div>
+      <strong>INICIAR SESIÓN</strong>
+      <small>MIS DNS · VER · BUSCAR · ELIMINAR</small>
+    </div>
+  </a>
+
   <a class="btn whatsapp" href="https://chat.whatsapp.com/DJ6UVv5EK0jBgGuDYhZDqr" target="_blank" rel="noopener noreferrer">
     <div class="icon">
       <img class="whatsapp-btn-img" src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
@@ -705,25 +684,14 @@ button,a{
     </div>
   </a>
 
-  <div class="integrity">
-    <div class="integrity-row">
-      <span class="integrity-label">TAMAÑO</span>
-      <span id="sizeText" class="integrity-value">229 MB</span>
-    </div>
-    <div class="integrity-row">
-      <span class="integrity-label">SHA-256</span>
-      <span id="shaText" class="integrity-value">PENDIENTE DE PUBLICAR</span>
-      <button id="copySha" class="copy-btn" type="button">COPIAR</button>
-    </div>
-    <div class="integrity-row">
-      <span class="integrity-label">ORIGEN</span>
-      <span class="integrity-value">Release oficial MOVILFIX</span>
-    </div>
-  </div>
-
   <div class="release-notes">
     <h3>NOVEDADES <span id="releaseVersionTag"></span></h3>
     <ul>
+      <li>Infinix Meta Mode integrado con 5 operaciones.</li>
+      <li>Motorola Rescue/LMSA con lectura Fastboot y ROM oficial.</li>
+      <li>Kitchen, Auto LK y VAL Protocol integrados.</li>
+      <li>Generador DNS actualizado.</li>
+
       <li>MOVILFIX Guard integrado en modos SIN DNS.</li>
       <li>Instalación ADB más discreta y validación por etapas.</li>
       <li>Device Owner comprobado antes de continuar.</li>
@@ -737,6 +705,103 @@ button,a{
   <h2 class="section">FUNCIONES INCLUIDAS</h2>
 
   <ul class="features">
+    <li style="--preview-img:url('assets/logo.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+      </div>
+      <div class="feature-title">
+        INFINIX META MODE <span class="tag">NUEVO</span>
+      </div>
+    </li>
+
+    <li style="--preview-img:url('assets/logo.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-circle-info"></i>
+      </div>
+      <div class="feature-title">IDENTIFICAR META</div>
+    </li>
+
+    <li style="--preview-img:url('assets/logo.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-unlock"></i>
+      </div>
+      <div class="feature-title">FRP META</div>
+    </li>
+
+    <li style="--preview-img:url('assets/logo.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-trash-can"></i>
+      </div>
+      <div class="feature-title">ERASE PAYJOY META</div>
+    </li>
+
+    <li style="--preview-img:url('assets/logo.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-rotate-left"></i>
+      </div>
+      <div class="feature-title">FACTORY RESET META</div>
+    </li>
+
+    <li style="--preview-img:url('assets/logo.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-power-off"></i>
+      </div>
+      <div class="feature-title">REBOOT META</div>
+    </li>
+
+    <li style="--preview-img:url('assets/motorola-blanca.png')" tabindex="0">
+      <div class="feature-icon">
+        <img class="feature-img" src="assets/motorola-blanca.png" alt="Motorola Rescue">
+      </div>
+      <div class="feature-title">
+        MOTOROLA RESCUE / LMSA <span class="tag">NUEVO</span>
+      </div>
+    </li>
+
+    <li style="--preview-img:url('assets/motorola-blanca.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-mobile-retro"></i>
+      </div>
+      <div class="feature-title">LECTURA MOTOROLA FASTBOOT</div>
+    </li>
+
+    <li style="--preview-img:url('assets/motorola-blanca.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-download"></i>
+      </div>
+      <div class="feature-title">DESCARGA ROM OFICIAL MOTOROLA</div>
+    </li>
+
+    <li style="--preview-img:url('assets/logo.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+      </div>
+      <div class="feature-title">MOVILFIX KITCHEN</div>
+    </li>
+
+    <li style="--preview-img:url('assets/logo.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <div class="feature-title">AUTO DETECCIÓN LK</div>
+    </li>
+
+    <li style="--preview-img:url('assets/logo.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-layer-group"></i>
+      </div>
+      <div class="feature-title">VAL PROTOCOL 1 / 2 / 3</div>
+    </li>
+
+    <li style="--preview-img:url('assets/logo.png')" tabindex="0">
+      <div class="feature-icon">
+        <i class="fa-solid fa-globe"></i>
+      </div>
+      <div class="feature-title">
+        GENERADOR DNS <span class="tag">ACTUALIZADO</span>
+      </div>
+    </li>
+
     <li style="--preview-img:url('assets/kiosko.png')" tabindex="0">
       <div class="feature-icon">
         <img class="feature-img" src="assets/kiosko.png" alt="Kiosko">
@@ -810,9 +875,7 @@ button,a{
   </ul>
 
   <div id="qr-device-owner" class="portal-note">
-    <strong style="color:#fff">QR DEVICE OWNER</strong><br>
-    Sección preparada para integrar el generador de aprovisionamiento de MOVILFIX Guard.
-    Puedes conectar aquí tu endpoint QR sin modificar el resto del diseño.
+    <strong style="color:#fff">MOVILFIX 2026</strong>
   </div>
 </section>
 
@@ -835,7 +898,7 @@ const MOVILFIX_RELEASE = {
   releaseDate: "29/08/2026",
 
   // Corrige aquí el tag del release real de GitHub si cambia.
-  downloadUrl: "https://github.com/Gustec2026/movilfix-web/releases/download/v3.4.0/MOVILFIX_INSTALLER_4.2.0.exe",
+  downloadUrl: "https://github.com/Gustec2026/movilfix-web/releases/download/v4.2.0/MOVILFIX_INSTALLER_4.2.0.exe",
 
   // Publica aquí el SHA-256 real del instalador.
   sha256: "PENDIENTE DE PUBLICAR",
@@ -848,9 +911,7 @@ const MOVILFIX_RELEASE = {
 function applyReleaseInfo(){
   document.getElementById("versionText").textContent = `MOVILFIX Tool v${MOVILFIX_RELEASE.version}`;
   document.getElementById("fileText").textContent = MOVILFIX_RELEASE.fileName;
-  document.getElementById("sizeText").textContent = MOVILFIX_RELEASE.fileSize;
   document.getElementById("releaseDateText").textContent = MOVILFIX_RELEASE.releaseDate;
-  document.getElementById("shaText").textContent = MOVILFIX_RELEASE.sha256;
   document.getElementById("downloadBtn").href = MOVILFIX_RELEASE.downloadUrl;
   document.getElementById("releaseVersionTag").textContent = `v${MOVILFIX_RELEASE.version}`;
 }
@@ -896,24 +957,7 @@ async function checkServer(){
   }
 }
 
-document.getElementById("copySha").addEventListener("click", async ()=>{
-  const value = MOVILFIX_RELEASE.sha256;
 
-  if(!value || value === "PENDIENTE DE PUBLICAR"){
-    alert("Publica primero el SHA-256 real del instalador.");
-    return;
-  }
-
-  try{
-    await navigator.clipboard.writeText(value);
-    const btn = document.getElementById("copySha");
-    const old = btn.textContent;
-    btn.textContent = "COPIADO";
-    setTimeout(()=>btn.textContent=old,1200);
-  }catch(_err){
-    alert(value);
-  }
-});
 
 /* MATRIX OPTIMIZADA: requestAnimationFrame + límite aproximado de 20 FPS */
 const canvas = document.getElementById("matrix");
